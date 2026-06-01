@@ -12,7 +12,7 @@ model User {
   email         String         @unique
   password      String
   name          String
-  role          Role           @default(USER)
+  role          String         @default("USER")
   phone         String?
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
@@ -21,11 +21,6 @@ model User {
   reviews       Review[]
   wishlistItems WishlistItem[]
   cart          Cart?
-}
-
-enum Role {
-  USER
-  ADMIN
 }
 
 model Address {
@@ -91,17 +86,12 @@ model ProductVariant {
   id            String      @id @default(cuid())
   productId     String
   product       Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
-  type          VariantType
+  type          String
   value         String
   stock         Int         @default(0)
   priceModifier Float       @default(0)
   cartItems     CartItem[]
   orderItems    OrderItem[]
-}
-
-enum VariantType {
-  SIZE
-  COLOR
 }
 
 model Cart {
@@ -129,7 +119,7 @@ model Order {
   userId          String
   user            User        @relation(fields: [userId], references: [id])
   orderNumber     String      @unique
-  status          OrderStatus @default(PENDING)
+  status          String      @default("PENDING")
   total           Float
   subtotal        Float
   shipping        Float       @default(0)
@@ -143,16 +133,6 @@ model Order {
   items           OrderItem[]
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
-}
-
-enum OrderStatus {
-  PENDING
-  CONFIRMED
-  PROCESSING
-  SHIPPED
-  DELIVERED
-  CANCELLED
-  REFUNDED
 }
 
 model OrderItem {
@@ -198,7 +178,7 @@ model WishlistItem {
 model Coupon {
   id        String     @id @default(cuid())
   code      String     @unique
-  type      CouponType
+  type      String
   value     Float
   minOrder  Float?
   maxUses   Int?
@@ -206,9 +186,4 @@ model Coupon {
   active    Boolean    @default(true)
   expiresAt DateTime?
   createdAt DateTime   @default(now())
-}
-
-enum CouponType {
-  PERCENT
-  FIXED
 }
