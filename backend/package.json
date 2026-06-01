@@ -1,0 +1,38 @@
+{
+  "name": "leather-goods-backend",
+  "version": "1.0.0",
+  "description": "Premium Leather Goods E-commerce Backend",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "prisma:generate": "prisma generate",
+    "prisma:push": "prisma db push",
+    "seed": "ts-node src/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "5",
+    "bcryptjs": "2",
+    "cors": "2",
+    "express": "4",
+    "express-async-errors": "3",
+    "express-rate-limit": "7",
+    "express-validator": "7",
+    "jsonwebtoken": "9",
+    "multer": "1",
+    "stripe": "14"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/multer": "^1.4.11",
+    "@types/node": "^20.11.5",
+    "prisma": "5",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  }
+}
