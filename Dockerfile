@@ -23,7 +23,7 @@ COPY --from=backend-builder /app/backend/node_modules ./node_modules
 COPY --from=backend-builder /app/backend/package.json ./package.json
 COPY --from=frontend-builder /app/frontend/dist ./frontend/dist
 
-RUN mkdir -p uploads
+RUN mkdir -p uploads data
 
 ENV NODE_ENV=production
 ENV PORT=8080
@@ -31,4 +31,5 @@ ENV PORT=8080
 RUN npx prisma generate
 EXPOSE 8080
 
-CMD ["sh", "-c", "npx prisma db push && node dist/server.js"]
+# Create data dir, sync schema, seed (idempotent), then start
+CMD ["sh", "-c", "mkdir -p data && npx prisma db push --accept-data-loss && (node dist/seed.js || echo 'seed skipped') && node dist/server.js"]
