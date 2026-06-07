@@ -181,8 +181,8 @@ const HomePage: React.FC = () => {
             {/* Image */}
             <div className="relative min-h-[320px] lg:min-h-0 overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg?auto=compress&cs=tinysrgb&w=1000"
-                alt="Nie's Wears Premium Leather Goods"
+                src="https://images.pexels.com/photos/4173289/pexels-photo-4173289.jpeg?auto=compress&cs=tinysrgb&w=1000"
+                alt="Nie's Wears — handcrafting leather"
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
