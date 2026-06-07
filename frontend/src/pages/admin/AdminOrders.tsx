@@ -5,6 +5,7 @@ import { Search, Package } from 'lucide-react';
 import toast from 'react-hot-toast';
 import api from '../../lib/api';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import { formatPrice } from '../../lib/format';
 
 const statusColors: Record<string, string> = {
   PENDING: 'bg-yellow-100 text-yellow-800',
@@ -138,7 +139,7 @@ const AdminOrders: React.FC = () => {
                         <span className="text-sm text-gray-600">{order.items?.length || 0} items</span>
                       </td>
                       <td className="px-4 py-4">
-                        <span className="font-semibold text-primary-900">${order.total?.toFixed(2)}</span>
+                        <span className="font-semibold text-primary-900">{formatPrice(order.total || 0)}</span>
                       </td>
                       <td className="px-4 py-4">
                         <span className={`badge text-xs ${statusColors[order.status]}`}>{order.status}</span>

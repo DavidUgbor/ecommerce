@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { useCartStore } from '../store/cartStore';
 import { useWishlistStore } from '../store/wishlistStore';
 import { useAuthStore } from '../store/authStore';
+import { formatPrice } from '../lib/format';
 
 export interface Product {
   id: string;
@@ -125,9 +126,9 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           </h3>
 
           <div className="flex items-center gap-2">
-            <span className="text-sm font-semibold text-ink">${product.price.toFixed(2)}</span>
+            <span className="text-sm font-semibold text-ink">{formatPrice(product.price)}</span>
             {product.comparePrice && (
-              <span className="text-xs text-ink-faint line-through">${product.comparePrice.toFixed(2)}</span>
+              <span className="text-xs text-ink-faint line-through">{formatPrice(product.comparePrice)}</span>
             )}
           </div>
         </div>

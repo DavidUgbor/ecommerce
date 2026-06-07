@@ -23,6 +23,7 @@ import ProductCard, { Product } from '../components/ProductCard';
 import { useCartStore } from '../store/cartStore';
 import { useWishlistStore } from '../store/wishlistStore';
 import { useAuthStore } from '../store/authStore';
+import { formatPrice } from '../lib/format';
 
 const ProductDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -237,11 +238,11 @@ const ProductDetailPage: React.FC = () => {
             {/* Price */}
             <div className="flex items-center gap-3 mb-6">
               <span className="font-display text-4xl font-bold text-primary-900">
-                ${currentPrice.toFixed(2)}
+                {formatPrice(currentPrice)}
               </span>
               {product.comparePrice && (
                 <span className="text-xl text-gray-400 line-through">
-                  ${product.comparePrice.toFixed(2)}
+                  {formatPrice(product.comparePrice)}
                 </span>
               )}
               {discount > 0 && (
@@ -287,7 +288,7 @@ const ProductDetailPage: React.FC = () => {
                         {variant.value}
                         {variant.priceModifier !== 0 && (
                           <span className="ml-1 text-xs">
-                            (+${variant.priceModifier.toFixed(0)})
+                            (+{formatPrice(variant.priceModifier)})
                           </span>
                         )}
                       </button>

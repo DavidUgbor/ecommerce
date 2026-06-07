@@ -7,6 +7,7 @@ import { useCartStore } from '../store/cartStore';
 import { useAuthStore } from '../store/authStore';
 import Breadcrumb from '../components/Breadcrumb';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { formatPrice } from '../lib/format';
 
 const CartPage: React.FC = () => {
   const { items, total, isLoading, updateQuantity, removeItem, clearCart } = useCartStore();
@@ -130,10 +131,10 @@ const CartPage: React.FC = () => {
 
                       <div className="text-right">
                         <div className="font-bold text-primary-900 text-lg">
-                          ${(itemPrice * item.quantity).toFixed(2)}
+                          {formatPrice(itemPrice * item.quantity)}
                         </div>
                         {item.quantity > 1 && (
-                          <div className="text-xs text-gray-400">${itemPrice.toFixed(2)} each</div>
+                          <div className="text-xs text-gray-400">{formatPrice(itemPrice)} each</div>
                         )}
                       </div>
                     </div>
@@ -163,27 +164,27 @@ const CartPage: React.FC = () => {
               <div className="space-y-3 mb-5">
                 <div className="flex justify-between text-sm text-gray-600">
                   <span>Subtotal ({items.reduce((s, i) => s + i.quantity, 0)} items)</span>
-                  <span className="font-medium text-primary-900">${total.toFixed(2)}</span>
+                  <span className="font-medium text-primary-900">{formatPrice(total)}</span>
                 </div>
                 {discount > 0 && (
                   <div className="flex justify-between text-sm text-green-600">
                     <span>Discount</span>
-                    <span>-${discount.toFixed(2)}</span>
+                    <span>-{formatPrice(discount)}</span>
                   </div>
                 )}
                 <div className="flex justify-between text-sm text-gray-600">
                   <span>Shipping</span>
                   <span className={shipping === 0 ? 'text-green-600 font-medium' : 'font-medium text-primary-900'}>
-                    {shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}
+                    {shipping === 0 ? 'FREE' : formatPrice(shipping)}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm text-gray-600">
                   <span>Tax (7.5%)</span>
-                  <span className="font-medium text-primary-900">${tax.toFixed(2)}</span>
+                  <span className="font-medium text-primary-900">{formatPrice(tax)}</span>
                 </div>
                 {shipping > 0 && (
                   <p className="text-xs text-accent">
-                    Add ${(150 - total).toFixed(2)} more for free shipping
+                    Add {formatPrice(50000 - total)} more for free shipping
                   </p>
                 )}
               </div>
@@ -217,7 +218,7 @@ const CartPage: React.FC = () => {
                 <div className="flex justify-between items-center">
                   <span className="font-semibold text-primary-900">Total</span>
                   <span className="font-display text-2xl font-bold text-primary-900">
-                    ${orderTotal.toFixed(2)}
+                    {formatPrice(orderTotal)}
                   </span>
                 </div>
               </div>

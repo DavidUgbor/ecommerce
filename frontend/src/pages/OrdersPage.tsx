@@ -5,6 +5,7 @@ import { Package, ArrowRight, ChevronRight } from 'lucide-react';
 import api from '../lib/api';
 import Breadcrumb from '../components/Breadcrumb';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { formatPrice } from '../lib/format';
 
 const statusColors: Record<string, string> = {
   PENDING: 'bg-yellow-50 text-yellow-700 border-yellow-200',
@@ -104,7 +105,7 @@ const OrdersPage: React.FC = () => {
                   <div className="flex items-center gap-4">
                     <div className="text-right">
                       <div className="font-display text-xl font-bold text-primary-900">
-                        ${order.total.toFixed(2)}
+                        {formatPrice(order.total)}
                       </div>
                       <div className="text-xs text-gray-400 capitalize">{order.paymentStatus}</div>
                     </div>

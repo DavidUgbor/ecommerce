@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import api from '../../lib/api';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import { formatPrice } from '../../lib/format';
 
 const statusColors: Record<string, string> = {
   PENDING: 'bg-yellow-100 text-yellow-800',
@@ -43,7 +44,7 @@ const AdminDashboard: React.FC = () => {
   const statCards = [
     {
       label: 'Total Revenue',
-      value: `$${(stats?.totalRevenue || 0).toFixed(2)}`,
+      value: formatPrice(stats?.totalRevenue || 0),
       icon: DollarSign,
       color: 'bg-green-50 text-green-700',
       trend: '+12%',
@@ -146,7 +147,7 @@ const AdminDashboard: React.FC = () => {
                   <div className="flex items-center gap-3">
                     <span className={`badge text-xs ${statusColors[order.status]}`}>{order.status}</span>
                     <span className="font-semibold text-primary-900 text-sm">
-                      ${order.items.reduce((s: number, i: any) => s + i.price * i.quantity, 0).toFixed(2)}
+                      {formatPrice(order.items.reduce((s: number, i: any) => s + i.price * i.quantity, 0))}
                     </span>
                   </div>
                 </div>

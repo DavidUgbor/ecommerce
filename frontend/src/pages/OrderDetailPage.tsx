@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import api from '../lib/api';
 import Breadcrumb from '../components/Breadcrumb';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { formatPrice } from '../lib/format';
 
 const statusColors: Record<string, string> = {
   PENDING: 'bg-yellow-50 text-yellow-700 border-yellow-200',
@@ -162,9 +163,9 @@ const OrderDetailPage: React.FC = () => {
                     </div>
                     <div className="text-right flex-shrink-0">
                       <p className="font-semibold text-primary-900 text-sm">
-                        ${(item.price * item.quantity).toFixed(2)}
+                        {formatPrice(item.price * item.quantity)}
                       </p>
-                      <p className="text-xs text-gray-400">${item.price.toFixed(2)} each</p>
+                      <p className="text-xs text-gray-400">{formatPrice(item.price)} each</p>
                     </div>
                   </div>
                 ))}
@@ -183,25 +184,25 @@ const OrderDetailPage: React.FC = () => {
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between text-gray-600">
                   <span>Subtotal</span>
-                  <span>${order.subtotal.toFixed(2)}</span>
+                  <span>{formatPrice(order.subtotal)}</span>
                 </div>
                 {order.discount > 0 && (
                   <div className="flex justify-between text-green-600">
                     <span>Discount</span>
-                    <span>-${order.discount.toFixed(2)}</span>
+                    <span>-{formatPrice(order.discount)}</span>
                   </div>
                 )}
                 <div className="flex justify-between text-gray-600">
                   <span>Shipping</span>
-                  <span>{order.shipping === 0 ? 'FREE' : `$${order.shipping.toFixed(2)}`}</span>
+                  <span>{order.shipping === 0 ? 'FREE' : formatPrice(order.shipping)}</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
                   <span>Tax</span>
-                  <span>${order.tax.toFixed(2)}</span>
+                  <span>{formatPrice(order.tax)}</span>
                 </div>
                 <div className="border-t border-gray-100 pt-2 flex justify-between font-bold text-primary-900">
                   <span>Total</span>
-                  <span>${order.total.toFixed(2)}</span>
+                  <span>{formatPrice(order.total)}</span>
                 </div>
               </div>
               <div className="mt-3 pt-3 border-t border-gray-100 text-xs text-gray-400">

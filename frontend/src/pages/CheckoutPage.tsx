@@ -14,6 +14,7 @@ import { useCartStore } from '../store/cartStore';
 import { useAuthStore } from '../store/authStore';
 import Breadcrumb from '../components/Breadcrumb';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { formatPrice } from '../lib/format';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY || 'pk_test_placeholder');
 
@@ -295,7 +296,7 @@ const CheckoutForm: React.FC = () => {
                       <p className="text-xs font-medium text-primary-900 truncate">{item.product.name}</p>
                       {item.variant && <p className="text-xs text-gray-400">{item.variant.value}</p>}
                     </div>
-                    <span className="text-xs font-semibold text-primary-900">${(price * item.quantity).toFixed(2)}</span>
+                    <span className="text-xs font-semibold text-primary-900">{formatPrice(price * item.quantity)}</span>
                   </div>
                 );
               })}
@@ -320,28 +321,28 @@ const CheckoutForm: React.FC = () => {
             <div className="space-y-2 mb-4 text-sm">
               <div className="flex justify-between text-gray-600">
                 <span>Subtotal</span>
-                <span>${total.toFixed(2)}</span>
+                <span>{formatPrice(total)}</span>
               </div>
               {discount > 0 && (
                 <div className="flex justify-between text-green-600">
                   <span>Discount</span>
-                  <span>-${discount.toFixed(2)}</span>
+                  <span>-{formatPrice(discount)}</span>
                 </div>
               )}
               <div className="flex justify-between text-gray-600">
                 <span>Shipping</span>
-                <span className={shipping === 0 ? 'text-green-600' : ''}>{shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}</span>
+                <span className={shipping === 0 ? 'text-green-600' : ''}>{shipping === 0 ? 'FREE' : formatPrice(shipping)}</span>
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>Tax</span>
-                <span>${tax.toFixed(2)}</span>
+                <span>{formatPrice(tax)}</span>
               </div>
             </div>
 
             <div className="border-t border-gray-100 pt-3 mb-5">
               <div className="flex justify-between items-center">
                 <span className="font-bold text-primary-900">Total</span>
-                <span className="font-display text-2xl font-bold text-primary-900">${orderTotal.toFixed(2)}</span>
+                <span className="font-display text-2xl font-bold text-primary-900">{formatPrice(orderTotal)}</span>
               </div>
             </div>
 
@@ -357,14 +358,14 @@ const CheckoutForm: React.FC = () => {
                 </span>
               ) : (
                 <>
-                  Place Order · ${orderTotal.toFixed(2)}
+                  {`Place Order · ${formatPrice(orderTotal)}`}
                 </>
               )}
             </button>
 
             <div className="flex items-center justify-center gap-2 mt-4 text-xs text-gray-400">
               <Truck className="w-3.5 h-3.5" />
-              {shipping === 0 ? 'Free shipping applied' : `$${shipping} shipping`}
+              {shipping === 0 ? 'Free shipping applied' : `${formatPrice(shipping)} shipping`}
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { X, ShoppingBag, Trash2, Plus, Minus } from 'lucide-react';
 import { useCartStore } from '../store/cartStore';
 import LoadingSpinner from './LoadingSpinner';
+import { formatPrice } from '../lib/format';
 
 const CartDrawer: React.FC = () => {
   const { items, isOpen, closeCart, total, updateQuantity, removeItem, isLoading } = useCartStore();
@@ -114,7 +115,7 @@ const CartDrawer: React.FC = () => {
                         </div>
                         <div className="flex items-center gap-2">
                           <span className="font-semibold text-primary-900 text-sm">
-                            ${(itemPrice * item.quantity).toFixed(2)}
+                            {formatPrice(itemPrice * item.quantity)}
                           </span>
                           <button
                             onClick={() => removeItem(item.id)}
@@ -137,7 +138,7 @@ const CartDrawer: React.FC = () => {
           <div className="p-5 border-t border-gray-100 bg-white">
             <div className="flex justify-between items-center mb-4">
               <span className="text-gray-600">Subtotal</span>
-              <span className="font-bold text-primary-900 text-lg">${total.toFixed(2)}</span>
+              <span className="font-bold text-primary-900 text-lg">{formatPrice(total)}</span>
             </div>
             <p className="text-xs text-gray-500 mb-4 text-center">
               Shipping & taxes calculated at checkout

@@ -5,6 +5,7 @@ import { Plus, Pencil, Trash2, Search, Package, X, Check } from 'lucide-react';
 import toast from 'react-hot-toast';
 import api from '../../lib/api';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import { formatPrice } from '../../lib/format';
 
 interface ProductForm {
   name: string;
@@ -349,9 +350,9 @@ const AdminProducts: React.FC = () => {
                       </td>
                       <td className="px-4 py-4">
                         <div>
-                          <p className="text-sm font-semibold text-primary-900">${product.price.toFixed(2)}</p>
+                          <p className="text-sm font-semibold text-primary-900">{formatPrice(product.price)}</p>
                           {product.comparePrice && (
-                            <p className="text-xs text-gray-400 line-through">${product.comparePrice.toFixed(2)}</p>
+                            <p className="text-xs text-gray-400 line-through">{formatPrice(product.comparePrice)}</p>
                           )}
                         </div>
                       </td>

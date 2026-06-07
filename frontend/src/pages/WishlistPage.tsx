@@ -6,6 +6,7 @@ import { useWishlistStore } from '../store/wishlistStore';
 import { useCartStore } from '../store/cartStore';
 import StarRating from '../components/StarRating';
 import Breadcrumb from '../components/Breadcrumb';
+import { formatPrice } from '../lib/format';
 
 const WishlistPage: React.FC = () => {
   const { items, toggle } = useWishlistStore();
@@ -102,9 +103,9 @@ const WishlistPage: React.FC = () => {
                   )}
 
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="font-bold text-primary-900">${product.price.toFixed(2)}</span>
+                    <span className="font-bold text-primary-900">{formatPrice(product.price)}</span>
                     {product.comparePrice && (
-                      <span className="text-xs text-gray-400 line-through">${product.comparePrice.toFixed(2)}</span>
+                      <span className="text-xs text-gray-400 line-through">{formatPrice(product.comparePrice)}</span>
                     )}
                   </div>
 
