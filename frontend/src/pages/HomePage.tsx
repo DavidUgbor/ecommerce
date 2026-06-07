@@ -197,7 +197,7 @@ const HomePage: React.FC = () => {
                   Nie's Wears is a woman-owned atelier creating leather goods with character. Every piece is shaped by a woman's delicate hands, with care and timeless techniques — for women and men alike, durable and designed to grow better with every wear.
                 </p>
                 <p className="text-white/50 text-xs mb-8 italic">
-                  "I make things I'd want to carry myself — for everyone."<br />— Nie
+                  "Every piece I make, I make like it's mine to keep."<br />— Nie
                 </p>
                 <Link to="/products"
                   className="inline-block border border-white/30 hover:border-accent hover:text-accent text-white text-xs font-semibold uppercase tracking-widest px-8 py-3 rounded transition-colors">
