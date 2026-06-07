@@ -385,6 +385,27 @@ const products = [
       { type: 'SIZE', value: '39', stock: 13, priceModifier: 0 },
     ],
   },
+  {
+    name: 'Beaded Leather Slipper',
+    slug: 'beaded-leather-slipper',
+    description: 'A celebration of colour and craft. These hand-finished leather slippers are decorated with vibrant beadwork over a soft leather upper and a cushioned footbed — a joyful, statement piece made to be noticed, for everyone.',
+    price: 119.99,
+    comparePrice: 149.99,
+    stock: 45,
+    sku: 'SL-001',
+    category: 'slippers',
+    tags: 'slippers,beaded,colorful,handcrafted,leather',
+    featured: true,
+    images: [
+      'https://images.pexels.com/photos/35633190/pexels-photo-35633190.jpeg?auto=compress&cs=tinysrgb&w=800',
+    ],
+    variants: [
+      { type: 'SIZE', value: '36', stock: 10, priceModifier: 0 },
+      { type: 'SIZE', value: '37', stock: 12, priceModifier: 0 },
+      { type: 'SIZE', value: '38', stock: 13, priceModifier: 0 },
+      { type: 'SIZE', value: '39', stock: 10, priceModifier: 0 },
+    ],
+  },
   // Accessories
   {
     name: 'Leather Watch Strap',
