@@ -54,12 +54,13 @@ app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Serve built frontend static files
+// Serve built frontend static files (assets have hashed names, cache them long)
 const frontendDist = path.join(__dirname, '../frontend/dist');
-app.use(express.static(frontendDist));
+app.use(express.static(frontendDist, { maxAge: '1y', index: false }));
 
-// Catch-all: send index.html for any non-API route (React Router)
+// Catch-all: send index.html — never cache so browser always gets latest
 app.get('*', (_req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
   res.sendFile(path.join(frontendDist, 'index.html'));
 });
 
