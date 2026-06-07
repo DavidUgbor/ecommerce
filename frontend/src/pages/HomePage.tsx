@@ -89,9 +89,6 @@ const HomePage: React.FC = () => {
             <p className="text-ink-muted text-base leading-relaxed mb-5 max-w-sm">
               From shoes to everyday accessories — each piece handcrafted with premium leather and timeless techniques. Durable, stylish, and designed to grow better with every wear.
             </p>
-            <p className="font-display text-lg text-ink italic mb-9 max-w-sm">
-              Made by a woman's delicate hands, with care — and designed for everyone.
-            </p>
             <div className="flex items-center gap-4">
               <Link to="/products"
                 className="bg-ink hover:bg-accent text-white text-xs font-semibold uppercase tracking-widest px-8 py-4 rounded transition-colors">
@@ -194,7 +191,7 @@ const HomePage: React.FC = () => {
                   Sculpted by Hand.<br />Meticulously Crafted.<br />Luxuriously Designed.
                 </h2>
                 <p className="text-white/70 text-sm leading-relaxed mb-6">
-                  Nie's Wears is a woman-owned leather atelier born in the heart of Surulere, Lagos. Every bag, shoe, wallet, and sandal is shaped by Nie's own hands — cut, stitched, and finished using timeless techniques passed down through generations of craft. We use only premium full-grain leather, chosen for its character and its promise: that with time and wear, each piece only gets more beautiful. Not fast fashion. Not mass-produced. Just real leather, made right.
+                  Nie's Wears is a one-woman leather business based in Surulere, Lagos. Every bag, shoe, wallet, and sandal is made by Nie herself — cut, stitched, and finished by hand. She uses quality full-grain leather because she believes what you carry should last. Not fast fashion. Not mass-produced. Just real leather, made right.
                 </p>
                 <p className="text-white/50 text-xs mb-8 italic">
                   "Every piece I make, I make like it's mine to keep."<br />— Nie, Founder & Maker
@@ -248,10 +245,10 @@ const HomePage: React.FC = () => {
       {/* ── NEWSLETTER ───────────────────────────────────── */}
       <section className="py-16 bg-ink">
         <div className="max-w-xl mx-auto px-4 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent mb-3">Stay Connected</p>
-          <h2 className="font-display text-3xl font-bold text-white mb-3">Join Nie's Inner Circle</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent mb-3">Stay Updated</p>
+          <h2 className="font-display text-3xl font-bold text-white mb-3">Get Nie's Latest</h2>
           <p className="text-white/60 text-sm mb-8">
-            New arrivals, exclusive drops, and Nie's personal style picks — first to know, always.
+            New arrivals and restocks, straight to your inbox. No spam, just leather.
           </p>
           <form className="flex max-w-md mx-auto" onSubmit={(e) => e.preventDefault()}>
             <input

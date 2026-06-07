@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
     <div className="bg-ink text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 text-center">
         <p className="text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.2em] text-white/80">
-          <span className="text-accent">✦</span>&nbsp; Handcrafted by a woman's delicate hands, with care — fine leather for everyone &nbsp;<span className="text-accent">✦</span>
+          <span className="text-accent">✦</span>&nbsp; Real leather. Made by hand. Shipped from Lagos. &nbsp;<span className="text-accent">✦</span>
         </p>
       </div>
     </div>
@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
                 Nie's Wears
               </span>
               <span className="hidden sm:block text-[8.5px] uppercase tracking-[0.28em] text-ink-muted mt-1">
-                Handcrafted Leather · Made by Hand
+                Leather Goods · Lagos, Nigeria
               </span>
             </div>
           </Link>
