@@ -57,6 +57,8 @@ const Footer: React.FC = () => {
               {[
                 { label: 'All Products', href: '/products' },
                 { label: 'Shoes',        href: '/products?category=shoes' },
+                { label: 'Sandals',      href: '/products?category=sandals' },
+                { label: 'Slippers',     href: '/products?category=slippers' },
                 { label: 'Bags',         href: '/products?category=bags' },
                 { label: 'Wallets',      href: '/products?category=wallets' },
                 { label: 'Belts',        href: '/products?category=belts' },
