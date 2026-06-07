@@ -30,7 +30,7 @@ const categories = [
     name: 'Accessories',
     slug: 'accessories',
     description: 'Leather accessories and small goods',
-    image: 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800&q=80',
+    image: 'https://images.pexels.com/photos/4452642/pexels-photo-4452642.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
 ];
 
@@ -71,7 +71,7 @@ const products = [
     tags: 'chelsea,boot,leather,premium',
     featured: true,
     images: [
-      'https://images.pexels.com/photos/6046235/pexels-photo-6046235.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/9323599/pexels-photo-9323599.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '40', stock: 6, priceModifier: 0 },
@@ -157,7 +157,7 @@ const products = [
     tags: 'braided,casual,belt,leather',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/89783/pexels-photo-89783.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/8612041/pexels-photo-8612041.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '32"', stock: 15, priceModifier: 0 },
@@ -300,7 +300,7 @@ const products = [
     tags: 'cardholder,slim,minimalist,cards',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=800&q=80',
+      'https://images.pexels.com/photos/33250/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Cognac', stock: 40, priceModifier: 0 },
@@ -380,7 +380,7 @@ const products = [
     tags: 'key,fob,organizer,leather',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+      'https://images.pexels.com/photos/6097/pexels-photo-6097.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Tan', stock: 50, priceModifier: 0 },
@@ -400,7 +400,7 @@ const products = [
     tags: 'phone,case,leather,protection',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=800&q=80',
+      'https://images.pexels.com/photos/1058193/pexels-photo-1058193.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: 'iPhone 15', stock: 20, priceModifier: 0 },
@@ -421,7 +421,7 @@ const products = [
     tags: 'desk,pad,office,workspace,leather',
     featured: true,
     images: [
-      'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=800&q=80',
+      'https://images.pexels.com/photos/6650001/pexels-photo-6650001.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Dark Green', stock: 10, priceModifier: 0 },
