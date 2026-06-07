@@ -4,14 +4,14 @@ import { Instagram, Twitter, Facebook, Youtube, Mail, Phone, MapPin } from 'luci
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-primary-900 text-cream-DEFAULT">
+    <footer className="bg-dark-DEFAULT text-cream-DEFAULT">
       {/* Newsletter */}
       <div className="border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h3 className="font-display text-2xl font-semibold mb-1">Stay in the Loop</h3>
-              <p className="text-cream-DEFAULT/70 text-sm">
+              <p className="text-cream-muted text-sm">
                 Subscribe for exclusive offers, new arrivals, and leather care tips.
               </p>
             </div>
@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
               </div>
               <span className="font-display font-bold text-xl">LeatherCraft</span>
             </div>
-            <p className="text-cream-DEFAULT/70 text-sm leading-relaxed mb-5">
+            <p className="text-cream-muted text-sm leading-relaxed mb-5">
               Premium handcrafted leather goods made with passion and precision. Every piece tells a story of craftsmanship.
             </p>
             <div className="flex items-center gap-3">
@@ -77,7 +77,7 @@ const Footer: React.FC = () => {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-cream-DEFAULT/70 hover:text-accent text-sm transition-colors"
+                    className="text-cream-muted hover:text-accent text-sm transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -101,7 +101,7 @@ const Footer: React.FC = () => {
                 <li key={i}>
                   <Link
                     to={link.href}
-                    className="text-cream-DEFAULT/70 hover:text-accent text-sm transition-colors"
+                    className="text-cream-muted hover:text-accent text-sm transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -114,15 +114,15 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-display font-semibold text-lg mb-4">Contact Us</h4>
             <ul className="space-y-3">
-              <li className="flex items-start gap-2.5 text-sm text-cream-DEFAULT/70">
+              <li className="flex items-start gap-2.5 text-sm text-cream-muted">
                 <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5 text-accent" />
                 <span>123 Leather Lane, Craftsville<br />New York, NY 10001</span>
               </li>
-              <li className="flex items-center gap-2.5 text-sm text-cream-DEFAULT/70">
+              <li className="flex items-center gap-2.5 text-sm text-cream-muted">
                 <Phone className="w-4 h-4 flex-shrink-0 text-accent" />
                 <span>+1 (555) 123-4567</span>
               </li>
-              <li className="flex items-center gap-2.5 text-sm text-cream-DEFAULT/70">
+              <li className="flex items-center gap-2.5 text-sm text-cream-muted">
                 <Mail className="w-4 h-4 flex-shrink-0 text-accent" />
                 <span>hello@leathercraft.com</span>
               </li>

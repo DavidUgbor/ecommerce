@@ -12,7 +12,7 @@ const categories = [
     name: 'Belts',
     slug: 'belts',
     description: 'Genuine leather belts crafted to perfection',
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
+    image: 'https://images.pexels.com/photos/6654763/pexels-photo-6654763.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     name: 'Bags',
@@ -136,7 +136,7 @@ const products = [
     tags: 'dress,belt,formal,silver,executive',
     featured: true,
     images: [
-      'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
+      'https://images.pexels.com/photos/6654763/pexels-photo-6654763.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '30"', stock: 15, priceModifier: 0 },
@@ -158,7 +158,7 @@ const products = [
     tags: 'braided,casual,belt,leather',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=800&q=80',
+      'https://images.pexels.com/photos/3023670/pexels-photo-3023670.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '32"', stock: 15, priceModifier: 0 },
@@ -179,7 +179,7 @@ const products = [
     tags: 'reversible,belt,leather,gold',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
+      'https://images.pexels.com/photos/6654763/pexels-photo-6654763.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '32"', stock: 12, priceModifier: 0 },
@@ -321,7 +321,7 @@ const products = [
     tags: 'passport,travel,rfid,organizer',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
+      'https://images.pexels.com/photos/6654763/pexels-photo-6654763.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Tan', stock: 20, priceModifier: 0 },

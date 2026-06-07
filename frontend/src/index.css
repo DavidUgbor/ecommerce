@@ -3,18 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
   body {
     font-family: 'Inter', system-ui, sans-serif;
-    background-color: #FFF8F0;
-    color: #1a1a1a;
+    background-color: #0C0806;
+    color: #F5EDD6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -26,32 +21,31 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-primary-900 hover:bg-primary-800 font-medium px-6 py-3 rounded transition-all duration-200 inline-flex items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed;
-    color: #FFF8F0;
+    @apply bg-accent hover:bg-accent-dark text-white font-medium px-6 py-3 rounded-lg transition-all duration-200 inline-flex items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed;
   }
 
   .btn-secondary {
-    @apply border-2 border-primary-900 text-primary-900 hover:bg-primary-900 font-medium px-6 py-3 rounded transition-all duration-200 inline-flex items-center gap-2;
+    @apply border border-white/20 hover:border-accent font-medium px-6 py-3 rounded-lg transition-all duration-200 inline-flex items-center gap-2;
+    color: #F5EDD6;
   }
-
-  .btn-secondary:hover {
-    color: #FFF8F0;
-  }
+  .btn-secondary:hover { color: #C9860A; }
 
   .btn-accent {
-    @apply bg-accent text-white hover:bg-accent-dark font-medium px-6 py-3 rounded transition-all duration-200 inline-flex items-center gap-2;
+    @apply bg-accent hover:bg-accent-dark text-white font-medium px-6 py-3 rounded-lg transition-all duration-200 inline-flex items-center gap-2;
   }
 
   .input-field {
-    @apply w-full border border-gray-300 rounded px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200 bg-white;
+    @apply w-full border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-all duration-200 bg-dark-50;
+    color: #F5EDD6;
   }
 
   .card {
-    @apply bg-white rounded-lg shadow-luxury overflow-hidden;
+    @apply bg-dark-50 rounded-xl overflow-hidden border border-white/5;
   }
 
   .section-title {
-    @apply font-display text-3xl md:text-4xl font-bold text-primary-900;
+    @apply font-display text-3xl md:text-4xl font-bold;
+    color: #F5EDD6;
   }
 
   .badge {
@@ -61,45 +55,26 @@
 
 @layer utilities {
   .text-gradient {
-    background: linear-gradient(135deg, #3D1A00, #C9860A);
+    background: linear-gradient(135deg, #F5EDD6, #C9860A);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
-  .bg-leather-texture {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.03' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
-  }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0C0806; }
+::-webkit-scrollbar-thumb { background: #C9860A; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #E8A92A; }
 
-::-webkit-scrollbar-track {
-  background: #FFF8F0;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #C9860A;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #3D1A00;
-}
-
-/* Price range slider */
 input[type='range'] {
   -webkit-appearance: none;
   appearance: none;
   height: 4px;
-  background: #e5e7eb;
+  background: #2E2014;
   border-radius: 2px;
   outline: none;
 }
-
 input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -108,18 +83,15 @@ input[type='range']::-webkit-slider-thumb {
   background: #C9860A;
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid white;
-  box-shadow: 0 0 0 1px #C9860A;
+  border: 2px solid #0C0806;
 }
 
-/* Loading animation */
 @keyframes shimmer {
-  0% { background-position: -200px 0; }
+  0%   { background-position: -200px 0; }
   100% { background-position: calc(200px + 100%) 0; }
 }
-
 .skeleton {
-  background: linear-gradient(90deg, #f0e8df 25%, #faf5f0 50%, #f0e8df 75%);
+  background: linear-gradient(90deg, #1A1209 25%, #2E2014 50%, #1A1209 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite;
 }
