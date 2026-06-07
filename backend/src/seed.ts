@@ -41,8 +41,8 @@ const categories = [
   {
     name: 'Slippers',
     slug: 'slippers',
-    description: 'Premium leather slippers and moccasins for home and leisure',
-    image: 'https://images.pexels.com/photos/2562992/pexels-photo-2562992.jpeg?auto=compress&cs=tinysrgb&w=800',
+    description: 'Premium leather slippers and slides for home and leisure',
+    image: 'https://images.pexels.com/photos/26925251/pexels-photo-26925251.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
 ];
 
@@ -69,27 +69,6 @@ const products = [
       { type: 'SIZE', value: '42', stock: 12, priceModifier: 0 },
       { type: 'SIZE', value: '43', stock: 10, priceModifier: 0 },
       { type: 'SIZE', value: '44', stock: 5, priceModifier: 0 },
-    ],
-  },
-  {
-    name: 'Chelsea Boot Premium',
-    slug: 'chelsea-boot-premium',
-    description: 'Sleek pull-on Chelsea boots in supple full-grain leather. Elastic side panels for easy wear, with a leather-lined interior for ultimate comfort. A versatile staple for any wardrobe.',
-    price: 329.99,
-    comparePrice: 399.99,
-    stock: 30,
-    sku: 'SH-002',
-    category: 'shoes',
-    tags: 'chelsea,boot,leather,premium',
-    featured: true,
-    images: [
-      'https://images.unsplash.com/photo-k_hd8rsSbtg?w=800&q=80',
-    ],
-    variants: [
-      { type: 'SIZE', value: '40', stock: 6, priceModifier: 0 },
-      { type: 'SIZE', value: '41', stock: 8, priceModifier: 0 },
-      { type: 'SIZE', value: '42', stock: 9, priceModifier: 0 },
-      { type: 'SIZE', value: '43', stock: 7, priceModifier: 0 },
     ],
   },
   {
@@ -152,27 +131,6 @@ const products = [
     variants: [
       { type: 'SIZE', value: '30"', stock: 15, priceModifier: 0 },
       { type: 'SIZE', value: '32"', stock: 20, priceModifier: 0 },
-      { type: 'SIZE', value: '34"', stock: 20, priceModifier: 0 },
-      { type: 'SIZE', value: '36"', stock: 15, priceModifier: 0 },
-      { type: 'SIZE', value: '38"', stock: 10, priceModifier: 0 },
-    ],
-  },
-  {
-    name: 'Braided Casual Belt',
-    slug: 'braided-casual-belt',
-    description: 'Handwoven braided leather belt with a timeless look. The no-hole design allows for a custom fit, while the genuine leather construction ensures lasting quality. Perfect for jeans and chinos.',
-    price: 69.99,
-    comparePrice: null,
-    stock: 60,
-    sku: 'BL-002',
-    category: 'belts',
-    tags: 'braided,casual,belt,leather',
-    featured: false,
-    images: [
-      'https://images.unsplash.com/photo-Mf194wsFKZI?w=800&q=80',
-    ],
-    variants: [
-      { type: 'SIZE', value: '32"', stock: 15, priceModifier: 0 },
       { type: 'SIZE', value: '34"', stock: 20, priceModifier: 0 },
       { type: 'SIZE', value: '36"', stock: 15, priceModifier: 0 },
       { type: 'SIZE', value: '38"', stock: 10, priceModifier: 0 },
@@ -321,26 +279,6 @@ const products = [
     ],
   },
   {
-    name: 'Travel Passport Wallet',
-    slug: 'travel-passport-wallet',
-    description: 'The ultimate travel companion. This passport wallet holds your passport, boarding passes, cards, and cash in one organized package. RFID-blocking technology protects your cards.',
-    price: 119.99,
-    comparePrice: 149.99,
-    stock: 60,
-    sku: 'WL-003',
-    category: 'wallets',
-    tags: 'passport,travel,rfid,organizer',
-    featured: false,
-    images: [
-      'https://images.unsplash.com/photo-YX5iTm_PPvg?w=800&q=80',
-    ],
-    variants: [
-      { type: 'COLOR', value: 'Tan', stock: 20, priceModifier: 0 },
-      { type: 'COLOR', value: 'Dark Brown', stock: 20, priceModifier: 0 },
-      { type: 'COLOR', value: 'Black', stock: 20, priceModifier: 0 },
-    ],
-  },
-  {
     name: 'Long Zip Wallet',
     slug: 'long-zip-wallet',
     description: 'A spacious zip-around wallet with room for everything. Features 12 card slots, 2 cash compartments, a coin pocket, and a photo ID window. Premium full-grain leather with antique brass zipper.',
@@ -384,24 +322,24 @@ const products = [
     ],
   },
   {
-    name: 'Strappy Summer Sandal',
-    slug: 'strappy-summer-sandal',
-    description: 'Elegant multi-strap sandals in supple vegetable-tanned leather. The criss-cross design sits beautifully on the foot, with a cushioned leather insole for all-day comfort. Effortlessly transitions from beach to dinner.',
-    price: 169.99,
-    comparePrice: null,
-    stock: 35,
+    name: 'Black Leather Sandal',
+    slug: 'black-leather-sandal',
+    description: 'Sleek black leather sandals crafted for understated elegance. Smooth full-grain straps over a contoured leather footbed deliver refined comfort that pairs effortlessly with any outfit, day or night.',
+    price: 159.99,
+    comparePrice: 199.99,
+    stock: 40,
     sku: 'SD-002',
     category: 'sandals',
-    tags: 'sandals,strappy,summer,elegant,leather',
+    tags: 'sandals,black,leather,elegant,handcrafted',
     featured: true,
     images: [
-      'https://images.pexels.com/photos/112285/pexels-photo-112285.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/26965812/pexels-photo-26965812.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '36', stock: 7, priceModifier: 0 },
       { type: 'SIZE', value: '37', stock: 9, priceModifier: 0 },
-      { type: 'SIZE', value: '38', stock: 10, priceModifier: 0 },
-      { type: 'SIZE', value: '39', stock: 9, priceModifier: 0 },
+      { type: 'SIZE', value: '38', stock: 12, priceModifier: 0 },
+      { type: 'SIZE', value: '39', stock: 12, priceModifier: 0 },
     ],
   },
   {
@@ -427,48 +365,6 @@ const products = [
   },
   // Slippers
   {
-    name: 'Leather Moccasin Slipper',
-    slug: 'leather-moccasin-slipper',
-    description: 'Wrap your feet in luxury with these hand-stitched leather moccasin slippers. Made from soft full-grain leather with a plush shearling lining for incredible warmth and comfort. A home essential you will reach for every day.',
-    price: 129.99,
-    comparePrice: 159.99,
-    stock: 40,
-    sku: 'SL-001',
-    category: 'slippers',
-    tags: 'slippers,moccasin,shearling,home,comfort',
-    featured: true,
-    images: [
-      'https://images.pexels.com/photos/2562992/pexels-photo-2562992.jpeg?auto=compress&cs=tinysrgb&w=800',
-    ],
-    variants: [
-      { type: 'SIZE', value: '36', stock: 8, priceModifier: 0 },
-      { type: 'SIZE', value: '37', stock: 10, priceModifier: 0 },
-      { type: 'SIZE', value: '38', stock: 12, priceModifier: 0 },
-      { type: 'SIZE', value: '39', stock: 10, priceModifier: 0 },
-    ],
-  },
-  {
-    name: 'Leather Loafer Slipper',
-    slug: 'leather-loafer-slipper',
-    description: 'The sophistication of a loafer meets the comfort of a slipper. Crafted in smooth calfskin leather with a flexible rubber sole, these are refined enough to wear beyond the home. Features a penny keeper strap and padded insole.',
-    price: 149.99,
-    comparePrice: null,
-    stock: 35,
-    sku: 'SL-002',
-    category: 'slippers',
-    tags: 'slippers,loafer,calfskin,rubber-sole,premium',
-    featured: true,
-    images: [
-      'https://images.pexels.com/photos/1464627/pexels-photo-1464627.jpeg?auto=compress&cs=tinysrgb&w=800',
-    ],
-    variants: [
-      { type: 'SIZE', value: '36', stock: 7, priceModifier: 0 },
-      { type: 'SIZE', value: '37', stock: 9, priceModifier: 0 },
-      { type: 'SIZE', value: '38', stock: 12, priceModifier: 0 },
-      { type: 'SIZE', value: '39', stock: 7, priceModifier: 0 },
-    ],
-  },
-  {
     name: 'Slide Leather Slipper',
     slug: 'slide-leather-slipper',
     description: 'Effortless luxury in a single band. These leather slide slippers feature a wide padded strap in butter-soft nappa leather and a contoured cork-latex footbed that molds to your foot over time.',
@@ -478,9 +374,9 @@ const products = [
     sku: 'SL-003',
     category: 'slippers',
     tags: 'slippers,slide,nappa,cork,footbed',
-    featured: false,
+    featured: true,
     images: [
-      'https://images.pexels.com/photos/5698850/pexels-photo-5698850.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/26925251/pexels-photo-26925251.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '36', stock: 12, priceModifier: 0 },
@@ -502,31 +398,11 @@ const products = [
     tags: 'watch,strap,horween,leather',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-12V36G17IbQ?w=800&q=80',
+      'https://images.pexels.com/photos/68201/pexels-photo-68201.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '20mm', stock: 45, priceModifier: 0 },
       { type: 'SIZE', value: '22mm', stock: 45, priceModifier: 5 },
-    ],
-  },
-  {
-    name: 'Key Fob & Organizer',
-    slug: 'key-fob-organizer',
-    description: 'Keep your keys organized and scratch-free with this premium leather key fob. Features 6 key slots in a compact folding design, reducing pocket bulk significantly.',
-    price: 39.99,
-    comparePrice: 49.99,
-    stock: 150,
-    sku: 'AC-002',
-    category: 'accessories',
-    tags: 'key,fob,organizer,leather',
-    featured: false,
-    images: [
-      'https://images.unsplash.com/photo-dEwvH-LlpWc?w=800&q=80',
-    ],
-    variants: [
-      { type: 'COLOR', value: 'Tan', stock: 50, priceModifier: 0 },
-      { type: 'COLOR', value: 'Dark Brown', stock: 50, priceModifier: 0 },
-      { type: 'COLOR', value: 'Black', stock: 50, priceModifier: 0 },
     ],
   },
   {
@@ -541,33 +417,13 @@ const products = [
     tags: 'phone,case,leather,protection',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-FbFr5L-tqJI?w=800&q=80',
+      'https://images.pexels.com/photos/13706809/pexels-photo-13706809.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: 'iPhone 15', stock: 20, priceModifier: 0 },
       { type: 'SIZE', value: 'iPhone 15 Pro', stock: 20, priceModifier: 5 },
       { type: 'SIZE', value: 'Samsung S24', stock: 15, priceModifier: 0 },
       { type: 'SIZE', value: 'Samsung S24+', stock: 15, priceModifier: 5 },
-    ],
-  },
-  {
-    name: 'Leather Desk Pad',
-    slug: 'leather-desk-pad',
-    description: 'Transform your workspace with this luxurious full-grain leather desk pad. The smooth surface is ideal for mouse and keyboard use, while the beveled edges add a refined finish to any desk.',
-    price: 149.99,
-    comparePrice: 179.99,
-    stock: 30,
-    sku: 'AC-004',
-    category: 'accessories',
-    tags: 'desk,pad,office,workspace,leather',
-    featured: true,
-    images: [
-      'https://images.unsplash.com/photo-XHYbCCnKroc?w=800&q=80',
-    ],
-    variants: [
-      { type: 'COLOR', value: 'Dark Green', stock: 10, priceModifier: 0 },
-      { type: 'COLOR', value: 'Tan', stock: 10, priceModifier: 0 },
-      { type: 'COLOR', value: 'Black', stock: 10, priceModifier: 0 },
     ],
   },
   {
@@ -582,7 +438,7 @@ const products = [
     tags: 'gloves,lambskin,cashmere,winter',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-B8dibVzUW0Q?w=800&q=80',
+      'https://images.pexels.com/photos/45057/pexels-photo-45057.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: 'S', stock: 10, priceModifier: 0 },
@@ -602,7 +458,7 @@ const products = [
     tags: 'notebook,journal,cover,writing',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/242616/pexels-photo-242616.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/7059616/pexels-photo-7059616.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Cognac', stock: 18, priceModifier: 0 },
@@ -663,6 +519,11 @@ async function main() {
 
     const existing = await prisma.product.findUnique({ where: { slug: productData.slug } });
     if (existing) {
+      // Refresh core fields and re-activate in case it was previously delisted
+      await prisma.product.update({
+        where: { id: existing.id },
+        data: { ...productData, categoryId: categoryMap[category], active: true },
+      });
       // Update images to fix any broken URLs
       await prisma.productImage.deleteMany({ where: { productId: existing.id } });
       await prisma.productImage.createMany({
@@ -690,6 +551,16 @@ async function main() {
       },
     });
     console.log('Product created:', product.name);
+  }
+
+  // Delist any product no longer present in the seed (soft-delete to preserve order history)
+  const activeSlugs = products.map((p) => p.slug);
+  const delisted = await prisma.product.updateMany({
+    where: { slug: { notIn: activeSlugs }, active: true },
+    data: { active: false },
+  });
+  if (delisted.count > 0) {
+    console.log(`Delisted ${delisted.count} product(s) no longer in seed`);
   }
 
   // Create coupons
