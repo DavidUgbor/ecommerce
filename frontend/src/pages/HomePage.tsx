@@ -191,7 +191,7 @@ const HomePage: React.FC = () => {
               <div className="max-w-sm">
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent mb-4">Our Story</p>
                 <h2 className="font-display text-3xl sm:text-4xl font-bold text-white leading-tight mb-5">
-                  Made by Hand.<br />Built for Luxury.
+                  Sculpted by Hand.<br />Meticulously Crafted.<br />Luxuriously Designed.
                 </h2>
                 <p className="text-white/70 text-sm leading-relaxed mb-6">
                   Nie's Wears is a woman-owned leather atelier born in the heart of Surulere, Lagos. Every bag, shoe, wallet, and sandal is shaped by Nie's own hands — cut, stitched, and finished using timeless techniques passed down through generations of craft. We use only premium full-grain leather, chosen for its character and its promise: that with time and wear, each piece only gets more beautiful. Not fast fashion. Not mass-produced. Just real leather, made right.
