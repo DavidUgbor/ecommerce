@@ -1,151 +1,105 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Twitter, Facebook, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { Instagram, Twitter, Facebook, Youtube } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-dark-DEFAULT text-cream-DEFAULT">
-      {/* Newsletter */}
-      <div className="border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="font-display text-2xl font-semibold mb-1">Stay in the Loop</h3>
-              <p className="text-cream-muted text-sm">
-                Subscribe for exclusive offers, new arrivals, and leather care tips.
-              </p>
-            </div>
-            <form className="flex gap-2 w-full md:w-auto" onSubmit={(e) => e.preventDefault()}>
-              <div className="relative flex-1 md:w-72">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full pl-9 pr-4 py-3 bg-white/10 border border-white/20 rounded text-cream-DEFAULT placeholder-cream-DEFAULT/50 focus:outline-none focus:ring-2 focus:ring-accent text-sm"
-                />
+    <footer className="bg-dark-DEFAULT border-t border-white/5 text-cream-DEFAULT">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+          {/* Brand */}
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 bg-accent rounded flex items-center justify-center">
+                <span className="text-white font-display font-bold text-xs">LC</span>
               </div>
+              <span className="font-display font-bold text-base tracking-wide">LeatherCraft</span>
+            </div>
+            <p className="text-cream-muted text-xs leading-relaxed mb-5 max-w-[200px]">
+              Serve your style with premium handcrafted leather. Discover our range of meticulously crafted goods — from wallets to bags, belts to shoes — timeless elegance.
+            </p>
+            <p className="text-cream-muted text-xs mb-3 font-semibold uppercase tracking-wider">Follow Us</p>
+            <div className="flex items-center gap-2">
+              {[Facebook, Instagram, Twitter, Youtube].map((Icon, i) => (
+                <a key={i} href="#"
+                  className="w-7 h-7 border border-white/15 rounded flex items-center justify-center hover:border-accent hover:text-accent transition-colors text-cream-muted">
+                  <Icon className="w-3.5 h-3.5" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Customer Service */}
+          <div>
+            <h4 className="text-cream-DEFAULT text-sm font-bold mb-4 uppercase tracking-wider">Customer Service</h4>
+            <ul className="space-y-2.5">
+              {[
+                { label: 'Help Center',        href: '#' },
+                { label: 'How to Buy',         href: '#' },
+                { label: 'Returns & Refunds',  href: '#' },
+                { label: 'Terms & Conditions', href: '#' },
+                { label: 'Warranty',           href: '#' },
+              ].map((link) => (
+                <li key={link.label}>
+                  <Link to={link.href} className="text-cream-muted text-xs hover:text-accent transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* LeatherCraft Links */}
+          <div>
+            <h4 className="text-cream-DEFAULT text-sm font-bold mb-4 uppercase tracking-wider">LeatherCraft</h4>
+            <ul className="space-y-2.5">
+              {[
+                { label: 'About',          href: '#' },
+                { label: 'Careers',        href: '#' },
+                { label: 'News & Blogs',   href: '#' },
+                { label: 'Privacy Policy', href: '#' },
+              ].map((link) => (
+                <li key={link.label}>
+                  <Link to={link.href} className="text-cream-muted text-xs hover:text-accent transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h4 className="text-cream-DEFAULT text-sm font-bold mb-2 uppercase tracking-wider">Newsletter</h4>
+            <p className="text-cream-muted text-xs leading-relaxed mb-4">
+              Stay in the know and be the first to discover our latest leather creations, exclusive offers, and style tips.
+            </p>
+            <form className="flex" onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="email"
+                placeholder="Email Address"
+                className="flex-1 min-w-0 px-3 py-2.5 bg-dark-50 border border-white/10 text-cream-DEFAULT text-xs placeholder-cream-muted/50 focus:outline-none focus:border-accent rounded-l transition-colors"
+              />
               <button
                 type="submit"
-                className="bg-accent hover:bg-accent-dark text-white px-5 py-3 rounded font-medium text-sm transition-colors whitespace-nowrap"
+                className="bg-accent hover:bg-accent-dark text-white text-xs font-bold px-4 py-2.5 rounded-r transition-colors whitespace-nowrap tracking-wide"
               >
-                Subscribe
+                SUBSCRIBE
               </button>
             </form>
           </div>
         </div>
       </div>
 
-      {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-accent rounded flex items-center justify-center">
-                <span className="text-white font-display font-bold text-sm">LC</span>
-              </div>
-              <span className="font-display font-bold text-xl">LeatherCraft</span>
-            </div>
-            <p className="text-cream-muted text-sm leading-relaxed mb-5">
-              Premium handcrafted leather goods made with passion and precision. Every piece tells a story of craftsmanship.
-            </p>
-            <div className="flex items-center gap-3">
-              {[Instagram, Twitter, Facebook, Youtube].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors"
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Shop */}
-          <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Shop</h4>
-            <ul className="space-y-2">
-              {[
-                { label: 'All Products', href: '/products' },
-                { label: 'Shoes', href: '/products?category=shoes' },
-                { label: 'Bags', href: '/products?category=bags' },
-                { label: 'Wallets', href: '/products?category=wallets' },
-                { label: 'Belts', href: '/products?category=belts' },
-                { label: 'Accessories', href: '/products?category=accessories' },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className="text-cream-muted hover:text-accent text-sm transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Customer Service */}
-          <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Customer Service</h4>
-            <ul className="space-y-2">
-              {[
-                { label: 'My Account', href: '/account' },
-                { label: 'My Orders', href: '/orders' },
-                { label: 'Shipping Policy', href: '#' },
-                { label: 'Returns & Exchanges', href: '#' },
-                { label: 'Size Guide', href: '#' },
-                { label: 'Care & Maintenance', href: '#' },
-              ].map((link, i) => (
-                <li key={i}>
-                  <Link
-                    to={link.href}
-                    className="text-cream-muted hover:text-accent text-sm transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Contact Us</h4>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-2.5 text-sm text-cream-muted">
-                <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5 text-accent" />
-                <span>123 Leather Lane, Craftsville<br />New York, NY 10001</span>
-              </li>
-              <li className="flex items-center gap-2.5 text-sm text-cream-muted">
-                <Phone className="w-4 h-4 flex-shrink-0 text-accent" />
-                <span>+1 (555) 123-4567</span>
-              </li>
-              <li className="flex items-center gap-2.5 text-sm text-cream-muted">
-                <Mail className="w-4 h-4 flex-shrink-0 text-accent" />
-                <span>hello@leathercraft.com</span>
-              </li>
-            </ul>
-            <div className="mt-5 p-3 bg-white/5 rounded-lg border border-white/10">
-              <p className="text-xs text-cream-DEFAULT/60">
-                <span className="text-accent font-semibold">Mon-Fri:</span> 9am – 6pm EST<br />
-                <span className="text-accent font-semibold">Sat:</span> 10am – 4pm EST
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom bar */}
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-cream-DEFAULT/50 text-xs">
+      <div className="border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-cream-muted text-xs">
             © {new Date().getFullYear()} LeatherCraft. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
-              <a key={item} href="#" className="text-cream-DEFAULT/50 hover:text-accent text-xs transition-colors">
+            {['Privacy Policy', 'Terms of Service'].map((item) => (
+              <a key={item} href="#" className="text-cream-muted text-xs hover:text-accent transition-colors">
                 {item}
               </a>
             ))}
