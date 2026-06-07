@@ -6,26 +6,6 @@ import api from '../lib/api';
 import ProductCard, { Product } from '../components/ProductCard';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-const blogPosts = [
-  {
-    date: 'Nov 12, 2024',
-    title: '5 Ways to Make Your Leather Accessories Last a Lifetime',
-    excerpt: 'Nothing lasts forever — but with the right care, your leather can outlive almost anything else in your wardrobe.',
-    image: 'https://images.pexels.com/photos/4046267/pexels-photo-4046267.jpeg?auto=compress&cs=tinysrgb&w=600',
-  },
-  {
-    date: 'Nov 14, 2024',
-    title: 'How to Store Leather Bags the Right Way',
-    excerpt: 'Leather bags thrive when stored correctly. A little effort now means a bag that ages beautifully for years.',
-    image: 'https://images.pexels.com/photos/3778212/pexels-photo-3778212.jpeg?auto=compress&cs=tinysrgb&w=600',
-  },
-  {
-    date: 'Nov 31, 2024',
-    title: 'How to Clean Leather: 4 Tips That Actually Work',
-    excerpt: 'Dirt and grime happen. Here\'s how Nie cleans her pieces without stripping the leather of its natural character.',
-    image: 'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=600',
-  },
-];
 
 const faqs = [
   { q: 'How long does it take to receive my order?', a: 'Standard orders ship within 2–3 business days. Express delivery typically arrives within 1–2 business days.' },
@@ -285,35 +265,6 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── JOURNAL ──────────────────────────────────────── */}
-      <section className="py-16 bg-page border-t border-sand">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-8">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent mb-1">Nie's Journal</p>
-              <h2 className="font-display text-2xl font-bold text-ink">News &amp; Stories</h2>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {blogPosts.map((post, i) => (
-              <div key={i} className="group cursor-pointer">
-                <div className="aspect-[4/3] overflow-hidden bg-canvas mb-4">
-                  <img src={post.image} alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-accent mb-2">{post.date}</p>
-                <h3 className="text-sm font-semibold text-ink leading-snug mb-2 group-hover:text-accent transition-colors line-clamp-2">
-                  {post.title}
-                </h3>
-                <p className="text-xs text-ink-muted leading-relaxed mb-3 line-clamp-2">{post.excerpt}</p>
-                <span className="text-xs font-semibold uppercase tracking-wider text-accent border-b border-accent pb-0.5">
-                  Read More
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── NEWSLETTER ───────────────────────────────────── */}
       <section className="py-16 bg-ink">
