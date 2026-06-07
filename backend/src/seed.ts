@@ -104,7 +104,7 @@ const products = [
     tags: 'loafer,penny,casual,leather',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=800&q=80',
+      'https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '40', stock: 8, priceModifier: 0 },
