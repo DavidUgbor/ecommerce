@@ -313,7 +313,7 @@ const products = [
     tags: 'bifold,slim,wallet,card,daily',
     featured: true,
     images: [
-      'https://images.unsplash.com/photo-1627123424574-724758594e93?w=800&q=80',
+      'https://images.pexels.com/photos/13225343/pexels-photo-13225343.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Tan', stock: 30, priceModifier: 0 },
