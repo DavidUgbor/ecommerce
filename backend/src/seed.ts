@@ -417,7 +417,7 @@ const products = [
     tags: 'sandals,flat,minimalist,nappa,everyday',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/26925248/pexels-photo-26925248.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/26965818/pexels-photo-26965818.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '36', stock: 10, priceModifier: 0 },
