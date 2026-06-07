@@ -191,7 +191,7 @@ const HomePage: React.FC = () => {
               <div className="max-w-sm">
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent mb-4">Our Story</p>
                 <h2 className="font-display text-3xl sm:text-4xl font-bold text-white leading-tight mb-5">
-                  From Her Hands,<br />To Yours.
+                  Made by Hand.<br />Built for Luxury.
                 </h2>
                 <p className="text-white/70 text-sm leading-relaxed mb-6">
                   Nie's Wears is a woman-owned atelier creating leather goods with character. Every piece is shaped by a woman's delicate hands, with care and timeless techniques — for women and men alike, durable and designed to grow better with every wear.
