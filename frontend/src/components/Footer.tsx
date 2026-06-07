@@ -12,12 +12,12 @@ const Footer: React.FC = () => {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 bg-accent rounded flex items-center justify-center">
-                <span className="text-white font-display font-bold text-xs">LC</span>
+                <span className="text-white font-display font-bold text-xs">NW</span>
               </div>
-              <span className="font-display font-bold text-base tracking-wide">LeatherCraft</span>
+              <span className="font-display font-bold text-base tracking-wide">Nie's Wears</span>
             </div>
             <p className="text-cream-muted text-xs leading-relaxed mb-5 max-w-[200px]">
-              Serve your style with premium handcrafted leather. Discover our range of meticulously crafted goods — from wallets to bags, belts to shoes — timeless elegance.
+              Nie's Wears creates leather goods with character. From shoes to everyday accessories, each piece is handcrafted using premium leather and timeless techniques. Durable, stylish, and designed to grow better with every wear.
             </p>
             <p className="text-cream-muted text-xs mb-3 font-semibold uppercase tracking-wider">Follow Us</p>
             <div className="flex items-center gap-2">
@@ -50,9 +50,9 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* LeatherCraft Links */}
+          {/* Nie's Wears Links */}
           <div>
-            <h4 className="text-cream-DEFAULT text-sm font-bold mb-4 uppercase tracking-wider">LeatherCraft</h4>
+            <h4 className="text-cream-DEFAULT text-sm font-bold mb-4 uppercase tracking-wider">Nie's Wears</h4>
             <ul className="space-y-2.5">
               {[
                 { label: 'About',          href: '#' },
@@ -69,12 +69,16 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Newsletter + Contact */}
           <div>
             <h4 className="text-cream-DEFAULT text-sm font-bold mb-2 uppercase tracking-wider">Newsletter</h4>
             <p className="text-cream-muted text-xs leading-relaxed mb-4">
-              Stay in the know and be the first to discover our latest leather creations, exclusive offers, and style tips.
+              Be the first to know about new arrivals, exclusive drops, and Nie's personal style picks — straight to your inbox.
             </p>
+            <div className="mb-5 space-y-1.5">
+              <p className="text-cream-muted text-xs">📍 93 Lawanson Road, beside Wema Bank, Surulere</p>
+              <p className="text-cream-muted text-xs">✉️ chideraannie129@gmail.com</p>
+            </div>
             <form className="flex" onSubmit={(e) => e.preventDefault()}>
               <input
                 type="email"
@@ -95,7 +99,7 @@ const Footer: React.FC = () => {
       <div className="border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-cream-muted text-xs">
-            © {new Date().getFullYear()} LeatherCraft. All rights reserved.
+            © {new Date().getFullYear()} Nie's Wears. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             {['Privacy Policy', 'Terms of Service'].map((item) => (

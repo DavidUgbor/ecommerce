@@ -50,10 +50,10 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5 flex-shrink-0">
             <div className="w-8 h-8 bg-accent rounded flex items-center justify-center">
-              <span className="text-white font-display font-bold text-xs">LC</span>
+              <span className="text-white font-display font-bold text-xs">NW</span>
             </div>
             <span className="font-display font-bold text-base text-cream-DEFAULT hidden sm:block tracking-wide">
-              LeatherCraft
+              Nie's Wears
             </span>
           </Link>
 
@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search for products"
+                placeholder="Search Nie's collection..."
                 className="flex-1 px-3 py-2 text-sm bg-dark-50 text-cream-DEFAULT placeholder-cream-muted/60 focus:outline-none"
               />
               <button
@@ -177,7 +177,7 @@ const Navbar: React.FC = () => {
           <div className="px-4 py-3 border-b border-white/5">
             <form onSubmit={handleSearch} className="flex border border-white/10 rounded overflow-hidden">
               <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search for products"
+                placeholder="Search Nie's collection..."
                 className="flex-1 px-3 py-2.5 text-sm bg-dark-100 text-cream-DEFAULT placeholder-cream-muted/60 focus:outline-none" />
               <button type="submit" className="bg-accent text-white text-xs font-bold px-4 transition-colors">SEARCH</button>
             </form>

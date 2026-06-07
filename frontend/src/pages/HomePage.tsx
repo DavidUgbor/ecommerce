@@ -102,7 +102,7 @@ const HomePage: React.FC = () => {
               Unveil the Artistry of Your Essentials!
             </h1>
             <p className="text-cream-muted text-sm leading-relaxed mb-8 max-w-sm">
-              Discover craftsmanship in every stitch with our leather goods where style meets functionality. Elevate your essentials with elegance.
+              From shoes to everyday accessories, each piece is handcrafted using premium leather and timeless techniques. Durable, stylish, and designed to grow better with every wear.
             </p>
             <Link
               to="/products"
@@ -241,8 +241,8 @@ const HomePage: React.FC = () => {
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold text-cream-DEFAULT mb-2">News &amp; Blog</h2>
             <p className="text-cream-muted text-sm max-w-md mx-auto">
-              Uncover the artistry, craftsmanship, and style behind our handmade leather products in our blog.
-              Dive into the world of leather, get insider insights, and stay updated on all things handcrafted.
+              Nie shares her world — from leather care rituals to style tips and the stories behind every collection.
+              Real talk from a woman who lives and breathes quality leather.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">

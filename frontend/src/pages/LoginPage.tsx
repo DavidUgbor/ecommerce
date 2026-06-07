@@ -39,10 +39,10 @@ const LoginPage: React.FC = () => {
         <div className="w-full max-w-md">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 mb-8">
-            <div className="w-9 h-9 bg-primary-900 rounded flex items-center justify-center">
-              <span className="text-accent font-display font-bold">LC</span>
+            <div className="w-9 h-9 bg-accent rounded flex items-center justify-center">
+              <span className="text-white font-display font-bold">NW</span>
             </div>
-            <span className="font-display font-bold text-2xl text-primary-900">LeatherCraft</span>
+            <span className="font-display font-bold text-2xl text-primary-900">Nie's Wears</span>
           </Link>
 
           <h1 className="font-display text-3xl font-bold text-primary-900 mb-1">Welcome back</h1>

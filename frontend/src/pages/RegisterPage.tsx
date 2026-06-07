@@ -39,7 +39,7 @@ const RegisterPage: React.FC = () => {
     try {
       await register({ email: form.email, password: form.password, name: form.name, phone: form.phone });
       await Promise.all([fetchCart(), fetchWishlist()]);
-      toast.success('Account created! Welcome to LeatherCraft');
+      toast.success("Account created! Welcome to Nie's Wears");
       navigate('/');
     } catch (err: any) {
       toast.error(err?.response?.data?.message || err?.response?.data?.errors?.[0]?.msg || 'Registration failed');
@@ -61,14 +61,14 @@ const RegisterPage: React.FC = () => {
         <div className="absolute top-8 left-8">
           <Link to="/" className="flex items-center gap-2">
             <div className="w-9 h-9 bg-accent rounded flex items-center justify-center">
-              <span className="text-white font-display font-bold">LC</span>
+              <span className="text-white font-display font-bold">NW</span>
             </div>
-            <span className="font-display font-bold text-2xl text-white">LeatherCraft</span>
+            <span className="font-display font-bold text-2xl text-white">Nie's Wears</span>
           </Link>
         </div>
         <div className="absolute bottom-12 left-12 right-12">
           <div className="space-y-3">
-            {['Exclusive member discounts', 'Order tracking & history', 'Priority customer support', 'Early access to new collections'].map((benefit) => (
+            {['Exclusive member discounts', 'Order tracking & history', 'Priority style support', 'Early access to Nie\'s new collections'].map((benefit) => (
               <div key={benefit} className="flex items-center gap-3 text-cream-DEFAULT">
                 <div className="w-5 h-5 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
                   <Check className="w-3 h-3 text-white" />
@@ -84,14 +84,14 @@ const RegisterPage: React.FC = () => {
       <div className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-md">
           <Link to="/" className="flex items-center gap-2 mb-8 lg:hidden">
-            <div className="w-9 h-9 bg-primary-900 rounded flex items-center justify-center">
-              <span className="text-accent font-display font-bold">LC</span>
+            <div className="w-9 h-9 bg-accent rounded flex items-center justify-center">
+              <span className="text-white font-display font-bold">NW</span>
             </div>
-            <span className="font-display font-bold text-2xl text-primary-900">LeatherCraft</span>
+            <span className="font-display font-bold text-2xl text-primary-900">Nie's Wears</span>
           </Link>
 
           <h1 className="font-display text-3xl font-bold text-primary-900 mb-1">Create your account</h1>
-          <p className="text-gray-500 mb-8">Join thousands of satisfied customers</p>
+          <p className="text-gray-500 mb-8">Join our community of women who love quality leather</p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>

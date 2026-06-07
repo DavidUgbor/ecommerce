@@ -199,7 +199,7 @@ const CartPage: React.FC = () => {
                     type="text"
                     value={couponCode}
                     onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
-                    placeholder="e.g. LEATHER10"
+                    placeholder="e.g. NIES10"
                     className="flex-1 border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 uppercase"
                   />
                   <button
@@ -210,7 +210,7 @@ const CartPage: React.FC = () => {
                   </button>
                 </div>
                 {couponError && <p className="text-red-500 text-xs mt-1">{couponError}</p>}
-                <p className="text-xs text-gray-400 mt-1">Try: LEATHER10 or WELCOME20</p>
+                <p className="text-xs text-gray-400 mt-1">Try: NIES10 or WELCOME20</p>
               </div>
 
               <div className="border-t border-gray-100 pt-4 mb-5">
