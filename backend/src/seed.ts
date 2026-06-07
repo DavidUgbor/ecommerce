@@ -83,7 +83,7 @@ const products = [
     tags: 'chelsea,boot,leather,premium',
     featured: true,
     images: [
-      'https://images.pexels.com/photos/9323599/pexels-photo-9323599.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.unsplash.com/photo-k_hd8rsSbtg?w=800&q=80',
     ],
     variants: [
       { type: 'SIZE', value: '40', stock: 6, priceModifier: 0 },
@@ -169,7 +169,7 @@ const products = [
     tags: 'braided,casual,belt,leather',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/8612041/pexels-photo-8612041.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.unsplash.com/photo-Mf194wsFKZI?w=800&q=80',
     ],
     variants: [
       { type: 'SIZE', value: '32"', stock: 15, priceModifier: 0 },
@@ -332,7 +332,7 @@ const products = [
     tags: 'passport,travel,rfid,organizer',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/167686/pexels-photo-167686.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.unsplash.com/photo-YX5iTm_PPvg?w=800&q=80',
     ],
     variants: [
       { type: 'COLOR', value: 'Tan', stock: 20, priceModifier: 0 },
@@ -502,7 +502,7 @@ const products = [
     tags: 'watch,strap,horween,leather',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/19766307/pexels-photo-19766307.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.unsplash.com/photo-12V36G17IbQ?w=800&q=80',
     ],
     variants: [
       { type: 'SIZE', value: '20mm', stock: 45, priceModifier: 0 },
@@ -521,7 +521,7 @@ const products = [
     tags: 'key,fob,organizer,leather',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/6097/pexels-photo-6097.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.unsplash.com/photo-dEwvH-LlpWc?w=800&q=80',
     ],
     variants: [
       { type: 'COLOR', value: 'Tan', stock: 50, priceModifier: 0 },
@@ -541,7 +541,7 @@ const products = [
     tags: 'phone,case,leather,protection',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/1058193/pexels-photo-1058193.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.unsplash.com/photo-FbFr5L-tqJI?w=800&q=80',
     ],
     variants: [
       { type: 'SIZE', value: 'iPhone 15', stock: 20, priceModifier: 0 },
@@ -562,7 +562,7 @@ const products = [
     tags: 'desk,pad,office,workspace,leather',
     featured: true,
     images: [
-      'https://images.pexels.com/photos/6650001/pexels-photo-6650001.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.unsplash.com/photo-XHYbCCnKroc?w=800&q=80',
     ],
     variants: [
       { type: 'COLOR', value: 'Dark Green', stock: 10, priceModifier: 0 },
@@ -582,7 +582,7 @@ const products = [
     tags: 'gloves,lambskin,cashmere,winter',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/4846400/pexels-photo-4846400.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.unsplash.com/photo-B8dibVzUW0Q?w=800&q=80',
     ],
     variants: [
       { type: 'SIZE', value: 'S', stock: 10, priceModifier: 0 },
