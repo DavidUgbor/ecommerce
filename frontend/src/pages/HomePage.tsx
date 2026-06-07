@@ -27,7 +27,16 @@ const Faq: React.FC = () => {
             <ChevronDown className={`w-4 h-4 text-ink-muted flex-shrink-0 ml-6 transition-transform ${open === i ? 'rotate-180' : ''}`} />
           </button>
           {open === i && (
-            <p className="pb-5 text-sm text-ink-muted leading-relaxed">{faq.a}</p>
+            <p className="pb-5 text-sm text-ink-muted leading-relaxed">
+              {faq.a.split('chideraannie129@gmail.com').map((part, j, arr) => (
+                <React.Fragment key={j}>
+                  {part}
+                  {j < arr.length - 1 && (
+                    <a href="mailto:chideraannie129@gmail.com" className="text-accent hover:underline">chideraannie129@gmail.com</a>
+                  )}
+                </React.Fragment>
+              ))}
+            </p>
           )}
         </div>
       ))}

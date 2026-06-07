@@ -78,7 +78,7 @@ const Footer: React.FC = () => {
             <h4 className="text-[10px] font-semibold uppercase tracking-widest text-white/40 mb-4">Get in Touch</h4>
             <div className="space-y-2 mb-6">
               <p className="text-white/60 text-xs">93 Lawanson Road, beside Wema Bank, Surulere</p>
-              <p className="text-white/60 text-xs">chideraannie129@gmail.com</p>
+              <a href="mailto:chideraannie129@gmail.com" className="text-white/60 text-xs hover:text-accent transition-colors">chideraannie129@gmail.com</a>
             </div>
             <h4 className="text-[10px] font-semibold uppercase tracking-widest text-white/40 mb-3">Newsletter</h4>
             <form className="flex" onSubmit={(e) => e.preventDefault()}>
