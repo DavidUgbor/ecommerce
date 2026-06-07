@@ -8,6 +8,7 @@ import { useWishlistStore } from '../store/wishlistStore';
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   const { itemCount, toggleCart } = useCartStore();
@@ -15,6 +16,7 @@ const Navbar: React.FC = () => {
   const { items: wishlistItems } = useWishlistStore();
   const navigate = useNavigate();
   const userMenuRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const close = (e: MouseEvent) => {
@@ -25,16 +27,22 @@ const Navbar: React.FC = () => {
     return () => document.removeEventListener('mousedown', close);
   }, []);
 
+  useEffect(() => {
+    if (searchOpen) searchRef.current?.focus();
+  }, [searchOpen]);
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
       navigate(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery('');
+      setSearchOpen(false);
       setIsMenuOpen(false);
     }
   };
 
   const navLinks = [
+    { label: 'All',         href: '/products' },
     { label: 'Shoes',       href: '/products?category=shoes' },
     { label: 'Bags',        href: '/products?category=bags' },
     { label: 'Wallets',     href: '/products?category=wallets' },
@@ -43,69 +51,77 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-30 bg-dark-DEFAULT border-b border-white/5">
+    <header className="sticky top-0 z-30 bg-white border-b border-sand">
+
+      {/* Search overlay */}
+      {searchOpen && (
+        <div className="absolute inset-0 bg-white z-10 flex items-center px-4 sm:px-6 lg:px-8">
+          <form onSubmit={handleSearch} className="flex-1 flex items-center gap-3 max-w-2xl mx-auto">
+            <Search className="w-5 h-5 text-ink-muted flex-shrink-0" />
+            <input
+              ref={searchRef}
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search Nie's collection..."
+              className="flex-1 py-2 text-base text-ink bg-transparent focus:outline-none placeholder-ink-faint"
+            />
+            <button type="button" onClick={() => { setSearchOpen(false); setSearchQuery(''); }}
+              className="p-1 text-ink-muted hover:text-ink transition-colors">
+              <X className="w-5 h-5" />
+            </button>
+          </form>
+        </div>
+      )}
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-4">
+        <div className="flex items-center justify-between h-14 gap-6">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 flex-shrink-0">
-            <div className="w-8 h-8 bg-accent rounded flex items-center justify-center">
-              <span className="text-white font-display font-bold text-xs">NW</span>
+          <Link to="/" className="flex items-center gap-2 flex-shrink-0">
+            <div className="w-7 h-7 bg-accent rounded flex items-center justify-center">
+              <span className="text-white font-display font-bold text-[10px]">NW</span>
             </div>
-            <span className="font-display font-bold text-base text-cream-DEFAULT hidden sm:block tracking-wide">
+            <span className="font-display font-semibold text-base text-ink tracking-wide hidden sm:block">
               Nie's Wears
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-7 flex-1 justify-center">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
-                className="text-sm font-medium text-cream-muted hover:text-cream-DEFAULT transition-colors duration-200"
+                className="text-xs font-semibold uppercase tracking-widest text-ink-muted hover:text-ink transition-colors duration-200"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          {/* Search */}
-          <form onSubmit={handleSearch} className="hidden md:flex items-center flex-1 max-w-sm mx-4">
-            <div className="flex w-full border border-white/10 rounded overflow-hidden focus-within:border-accent transition-colors">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search Nie's collection..."
-                className="flex-1 px-3 py-2 text-sm bg-dark-50 text-cream-DEFAULT placeholder-cream-muted/60 focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="bg-accent hover:bg-accent-dark text-white text-xs font-bold px-4 py-2 transition-colors whitespace-nowrap tracking-wide"
-              >
-                SEARCH
-              </button>
-            </div>
-          </form>
-
           {/* Actions */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0.5">
+            <button onClick={() => setSearchOpen(true)}
+              className="p-2.5 text-ink-muted hover:text-ink transition-colors">
+              <Search className="w-4.5 h-4.5" style={{ width: '1.1rem', height: '1.1rem' }} />
+            </button>
+
             {isAuthenticated && (
-              <Link to="/wishlist" className="relative p-2 text-cream-muted hover:text-cream-DEFAULT transition-colors">
-                <Heart className="w-5 h-5" />
+              <Link to="/wishlist" className="relative p-2.5 text-ink-muted hover:text-ink transition-colors">
+                <Heart style={{ width: '1.1rem', height: '1.1rem' }} />
                 {wishlistItems.length > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 w-[17px] h-[17px] bg-accent text-white text-[9px] font-bold rounded-full flex items-center justify-center">
+                  <span className="absolute top-1 right-1 w-3.5 h-3.5 bg-accent text-white text-[8px] font-bold rounded-full flex items-center justify-center">
                     {wishlistItems.length}
                   </span>
                 )}
               </Link>
             )}
 
-            <button onClick={toggleCart} className="relative p-2 text-cream-muted hover:text-cream-DEFAULT transition-colors">
-              <ShoppingCart className="w-5 h-5" />
+            <button onClick={toggleCart} className="relative p-2.5 text-ink-muted hover:text-ink transition-colors">
+              <ShoppingCart style={{ width: '1.1rem', height: '1.1rem' }} />
               {itemCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 w-[17px] h-[17px] bg-accent text-white text-[9px] font-bold rounded-full flex items-center justify-center">
+                <span className="absolute top-1 right-1 w-3.5 h-3.5 bg-accent text-white text-[8px] font-bold rounded-full flex items-center justify-center">
                   {itemCount > 99 ? '99+' : itemCount}
                 </span>
               )}
@@ -113,21 +129,19 @@ const Navbar: React.FC = () => {
 
             {isAuthenticated ? (
               <div className="relative" ref={userMenuRef}>
-                <button
-                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                  className="flex items-center gap-1 p-1.5 text-cream-muted hover:text-cream-DEFAULT transition-colors"
-                >
-                  <div className="w-7 h-7 bg-accent rounded-full flex items-center justify-center">
-                    <span className="text-white text-xs font-bold">{user?.name?.charAt(0).toUpperCase()}</span>
+                <button onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                  className="flex items-center gap-1 p-1.5 text-ink-muted hover:text-ink transition-colors">
+                  <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
+                    <span className="text-white text-[10px] font-bold">{user?.name?.charAt(0).toUpperCase()}</span>
                   </div>
                   <ChevronDown className={`w-3 h-3 transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`} />
                 </button>
 
                 {isUserMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-52 bg-dark-50 rounded-lg border border-white/10 shadow-lg py-1 z-50">
-                    <div className="px-4 py-3 border-b border-white/5">
-                      <p className="font-semibold text-cream-DEFAULT text-sm">{user?.name}</p>
-                      <p className="text-xs text-cream-muted truncate">{user?.email}</p>
+                  <div className="absolute right-0 mt-2 w-52 bg-white rounded-lg border border-sand shadow-card-hover py-1 z-50 animate-fade-in">
+                    <div className="px-4 py-3 border-b border-sand-light">
+                      <p className="font-semibold text-ink text-sm">{user?.name}</p>
+                      <p className="text-xs text-ink-muted truncate">{user?.email}</p>
                     </div>
                     {[
                       { to: '/account', icon: User,    label: 'My Account' },
@@ -135,36 +149,43 @@ const Navbar: React.FC = () => {
                       { to: '/wishlist',icon: Heart,   label: 'Wishlist' },
                     ].map(({ to, icon: Icon, label }) => (
                       <Link key={to} to={to} onClick={() => setIsUserMenuOpen(false)}
-                        className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-cream-muted hover:text-cream-DEFAULT hover:bg-dark-100 transition-colors">
+                        className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-ink-muted hover:text-ink hover:bg-canvas transition-colors">
                         <Icon className="w-4 h-4" />{label}
                       </Link>
                     ))}
                     {user?.role === 'ADMIN' && (
                       <>
-                        <div className="border-t border-white/5 my-1" />
+                        <div className="border-t border-sand-light my-1" />
                         <Link to="/admin" onClick={() => setIsUserMenuOpen(false)}
-                          className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-accent hover:bg-dark-100 transition-colors">
+                          className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-accent hover:bg-canvas transition-colors">
                           <LayoutDashboard className="w-4 h-4" />Admin Panel
                         </Link>
                       </>
                     )}
-                    <div className="border-t border-white/5 my-1" />
+                    <div className="border-t border-sand-light my-1" />
                     <button onClick={() => { logout(); setIsUserMenuOpen(false); navigate('/'); }}
-                      className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-red-400 hover:bg-dark-100 w-full transition-colors">
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-red-500 hover:bg-canvas w-full transition-colors">
                       <LogOut className="w-4 h-4" />Sign Out
                     </button>
                   </div>
                 )}
               </div>
             ) : (
-              <div className="flex items-center gap-2">
-                <Link to="/login" className="text-sm text-cream-muted hover:text-cream-DEFAULT transition-colors px-3 py-2 hidden sm:block">Sign In</Link>
-                <Link to="/register" className="text-sm font-semibold bg-accent hover:bg-accent-dark text-white px-4 py-2 rounded transition-colors hidden sm:block">Register</Link>
-                <Link to="/login" className="p-2 text-cream-muted hover:text-cream-DEFAULT sm:hidden"><User className="w-5 h-5" /></Link>
+              <div className="flex items-center gap-2 ml-1">
+                <Link to="/login" className="text-xs font-semibold uppercase tracking-widest text-ink-muted hover:text-ink transition-colors hidden sm:block">
+                  Sign In
+                </Link>
+                <Link to="/register" className="text-xs font-semibold uppercase tracking-widest bg-ink text-white px-4 py-2 rounded hover:bg-ink-muted transition-colors hidden sm:block">
+                  Register
+                </Link>
+                <Link to="/login" className="p-2 text-ink-muted hover:text-ink sm:hidden">
+                  <User className="w-5 h-5" />
+                </Link>
               </div>
             )}
 
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 text-cream-muted hover:text-cream-DEFAULT transition-colors lg:hidden">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 text-ink-muted hover:text-ink transition-colors lg:hidden ml-1">
               {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
@@ -173,29 +194,33 @@ const Navbar: React.FC = () => {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-dark-50 border-t border-white/5">
-          <div className="px-4 py-3 border-b border-white/5">
-            <form onSubmit={handleSearch} className="flex border border-white/10 rounded overflow-hidden">
-              <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search Nie's collection..."
-                className="flex-1 px-3 py-2.5 text-sm bg-dark-100 text-cream-DEFAULT placeholder-cream-muted/60 focus:outline-none" />
-              <button type="submit" className="bg-accent text-white text-xs font-bold px-4 transition-colors">SEARCH</button>
-            </form>
-          </div>
+        <div className="lg:hidden bg-white border-t border-sand animate-fade-in">
           <nav className="px-4 py-2">
             {navLinks.map((link) => (
               <Link key={link.href} to={link.href} onClick={() => setIsMenuOpen(false)}
-                className="flex items-center py-3 text-cream-muted hover:text-cream-DEFAULT border-b border-white/5 last:border-0 text-sm">
+                className="flex items-center py-3 text-xs font-semibold uppercase tracking-widest text-ink-muted hover:text-ink border-b border-sand-light last:border-0">
                 {link.label}
               </Link>
             ))}
           </nav>
+          <div className="px-4 py-3 border-t border-sand">
+            <form onSubmit={handleSearch} className="flex items-center gap-2 border border-sand rounded px-3 py-2">
+              <Search className="w-4 h-4 text-ink-faint" />
+              <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search Nie's collection..."
+                className="flex-1 text-sm text-ink bg-transparent focus:outline-none placeholder-ink-faint" />
+            </form>
+          </div>
           {!isAuthenticated && (
-            <div className="px-4 py-3 border-t border-white/5 flex gap-2">
+            <div className="px-4 py-3 border-t border-sand flex gap-2">
               <Link to="/login" onClick={() => setIsMenuOpen(false)}
-                className="flex-1 text-center py-2.5 border border-white/20 text-cream-DEFAULT rounded text-sm font-medium">Sign In</Link>
+                className="flex-1 text-center py-2.5 border border-sand text-ink rounded text-xs font-semibold uppercase tracking-widest">
+                Sign In
+              </Link>
               <Link to="/register" onClick={() => setIsMenuOpen(false)}
-                className="flex-1 text-center py-2.5 bg-accent text-white rounded text-sm font-semibold">Register</Link>
+                className="flex-1 text-center py-2.5 bg-ink text-white rounded text-xs font-semibold uppercase tracking-widest">
+                Register
+              </Link>
             </div>
           )}
         </div>

@@ -62,64 +62,74 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
     <div className="group">
       <Link to={`/products/${product.slug}`} className="block">
         {/* Image */}
-        <div className="relative aspect-square rounded-lg overflow-hidden bg-dark-50 mb-3">
+        <div className="relative aspect-square overflow-hidden bg-canvas mb-3">
           <img
             src={imageUrl}
             alt={product.name}
             loading="lazy"
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700"
+            style={{ '--tw-scale-x': 1.03, '--tw-scale-y': 1.03 } as React.CSSProperties}
             onError={(e) => { (e.target as HTMLImageElement).src = FALLBACK; }}
           />
 
           {/* Badges */}
           <div className="absolute top-2 left-2 flex flex-col gap-1">
-            {product.stock === 0 && (
-              <span className="text-[10px] bg-dark-DEFAULT/80 text-cream-muted px-2 py-0.5 rounded">Sold Out</span>
-            )}
             {discount > 0 && (
-              <span className="text-[10px] bg-accent text-white px-2 py-0.5 rounded font-medium">-{discount}%</span>
+              <span className="text-[10px] bg-ink text-white px-2 py-0.5 tracking-wider font-medium">
+                -{discount}%
+              </span>
+            )}
+            {product.stock === 0 && (
+              <span className="text-[10px] bg-white text-ink-muted px-2 py-0.5 tracking-wider border border-sand">
+                SOLD OUT
+              </span>
             )}
           </div>
 
           {/* Wishlist */}
           <button onClick={handleWishlist}
             className={`absolute top-2 right-2 p-1.5 rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100 ${
-              inWishlist ? 'bg-red-500 text-white opacity-100' : 'bg-dark-DEFAULT/70 text-cream-muted hover:text-red-400'
+              inWishlist
+                ? 'bg-white text-red-500 opacity-100'
+                : 'bg-white/90 text-ink-muted hover:text-red-400'
             }`}>
             <Heart className={`w-3.5 h-3.5 ${inWishlist ? 'fill-current' : ''}`} />
           </button>
 
-          {/* Add to cart - slides up on hover */}
-          <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 p-2.5">
+          {/* Add to cart — slides up on hover */}
+          <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 p-2.5 bg-white/95 backdrop-blur-sm">
             <button onClick={handleCart} disabled={adding || product.stock === 0}
-              className="w-full bg-accent hover:bg-accent-dark text-white py-2 rounded text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors disabled:opacity-60">
+              className="w-full bg-ink hover:bg-accent text-white py-2 text-xs font-semibold uppercase tracking-widest flex items-center justify-center gap-1.5 transition-colors disabled:opacity-50">
               <ShoppingCart className="w-3.5 h-3.5" />
               {adding ? 'Adding...' : 'Add to Cart'}
             </button>
           </div>
         </div>
 
-        {/* Stars */}
-        <div className="flex items-center gap-0.5 mb-1.5">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} className={`w-3 h-3 ${i < Math.round(product.avgRating || 0) ? 'text-accent fill-accent' : 'text-dark-300'}`} />
-          ))}
+        {/* Meta */}
+        <div>
+          {/* Stars */}
           {product.reviewCount > 0 && (
-            <span className="text-[10px] text-cream-muted ml-1">({product.reviewCount})</span>
+            <div className="flex items-center gap-0.5 mb-1">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className={`w-2.5 h-2.5 ${i < Math.round(product.avgRating || 0) ? 'text-accent fill-accent' : 'text-sand'}`} />
+              ))}
+              <span className="text-[10px] text-ink-faint ml-1">({product.reviewCount})</span>
+            </div>
           )}
-        </div>
 
-        {/* Name */}
-        <h3 className="text-sm text-cream-DEFAULT font-medium leading-snug line-clamp-2 mb-1.5 group-hover:text-accent transition-colors">
-          {product.name}
-        </h3>
+          <p className="text-[10px] text-ink-muted uppercase tracking-widest mb-0.5">{product.category.name}</p>
 
-        {/* Price */}
-        <div className="flex items-center gap-2">
-          <span className="font-bold text-cream-DEFAULT">${product.price.toFixed(2)}</span>
-          {product.comparePrice && (
-            <span className="text-xs text-cream-muted line-through">${product.comparePrice.toFixed(2)}</span>
-          )}
+          <h3 className="text-sm text-ink font-medium leading-snug line-clamp-2 mb-1.5 group-hover:text-accent transition-colors">
+            {product.name}
+          </h3>
+
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-semibold text-ink">${product.price.toFixed(2)}</span>
+            {product.comparePrice && (
+              <span className="text-xs text-ink-faint line-through">${product.comparePrice.toFixed(2)}</span>
+            )}
+          </div>
         </div>
       </Link>
     </div>
