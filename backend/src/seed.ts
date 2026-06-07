@@ -71,8 +71,7 @@ const products = [
     tags: 'chelsea,boot,leather,premium',
     featured: true,
     images: [
-      'https://images.unsplash.com/photo-1638247025967-b4e38f787b76?w=800&q=80',
-      'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=800&q=80',
+      'https://images.pexels.com/photos/6046235/pexels-photo-6046235.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '40', stock: 6, priceModifier: 0 },
@@ -158,7 +157,7 @@ const products = [
     tags: 'braided,casual,belt,leather',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/3023670/pexels-photo-3023670.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/89783/pexels-photo-89783.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '32"', stock: 15, priceModifier: 0 },
@@ -179,7 +178,7 @@ const products = [
     tags: 'reversible,belt,leather,gold',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/6654763/pexels-photo-6654763.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/31323080/pexels-photo-31323080.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '32"', stock: 12, priceModifier: 0 },
@@ -201,8 +200,8 @@ const products = [
     tags: 'briefcase,laptop,work,professional,leather',
     featured: true,
     images: [
-      'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80',
-      'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
+      'https://images.pexels.com/photos/7595038/pexels-photo-7595038.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/3778212/pexels-photo-3778212.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Tan', stock: 8, priceModifier: 0 },
@@ -321,7 +320,7 @@ const products = [
     tags: 'passport,travel,rfid,organizer',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/6654763/pexels-photo-6654763.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/167686/pexels-photo-167686.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Tan', stock: 20, priceModifier: 0 },
@@ -341,7 +340,7 @@ const products = [
     tags: 'zip,wallet,spacious,organizer',
     featured: true,
     images: [
-      'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80',
+      'https://images.pexels.com/photos/6649420/pexels-photo-6649420.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Burgundy', stock: 15, priceModifier: 0 },
@@ -362,7 +361,7 @@ const products = [
     tags: 'watch,strap,horween,leather',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800&q=80',
+      'https://images.pexels.com/photos/19766307/pexels-photo-19766307.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '20mm', stock: 45, priceModifier: 0 },
@@ -442,7 +441,7 @@ const products = [
     tags: 'gloves,lambskin,cashmere,winter',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80',
+      'https://images.pexels.com/photos/4846400/pexels-photo-4846400.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: 'S', stock: 10, priceModifier: 0 },
@@ -462,7 +461,7 @@ const products = [
     tags: 'notebook,journal,cover,writing',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-1517842645767-c639042777db?w=800&q=80',
+      'https://images.pexels.com/photos/242616/pexels-photo-242616.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Cognac', stock: 18, priceModifier: 0 },
