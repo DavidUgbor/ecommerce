@@ -106,8 +106,11 @@ const HomePage: React.FC = () => {
               Leather Goods<br />
               <em className="not-italic text-accent">With Character</em>
             </h1>
-            <p className="text-ink-muted text-base leading-relaxed mb-10 max-w-sm">
+            <p className="text-ink-muted text-base leading-relaxed mb-5 max-w-sm">
               From shoes to everyday accessories — each piece handcrafted with premium leather and timeless techniques. Durable, stylish, and designed to grow better with every wear.
+            </p>
+            <p className="font-display text-lg text-ink italic mb-9 max-w-sm">
+              Made by a woman's delicate hands, with care — and designed for everyone.
             </p>
             <div className="flex items-center gap-4">
               <Link to="/products"
@@ -208,13 +211,13 @@ const HomePage: React.FC = () => {
               <div className="max-w-sm">
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent mb-4">Our Story</p>
                 <h2 className="font-display text-3xl sm:text-4xl font-bold text-white leading-tight mb-5">
-                  Made with Intention.<br />Worn with Pride.
+                  Made by Hand.<br />Worn by Everyone.
                 </h2>
                 <p className="text-white/70 text-sm leading-relaxed mb-6">
-                  Nie's Wears creates leather goods with character. From shoes to everyday accessories, each piece is handcrafted using premium leather and timeless techniques — durable, stylish, and designed to grow better with every wear.
+                  Nie's Wears is a woman-owned atelier creating leather goods with character. Every piece is shaped by a woman's delicate hands, with care and timeless techniques — for women and men alike, durable and designed to grow better with every wear.
                 </p>
                 <p className="text-white/50 text-xs mb-8 italic">
-                  "I make things I'd want to carry myself."<br />— Nie
+                  "I make things I'd want to carry myself — for everyone."<br />— Nie
                 </p>
                 <Link to="/products"
                   className="inline-block border border-white/30 hover:border-accent hover:text-accent text-white text-xs font-semibold uppercase tracking-widest px-8 py-3 rounded transition-colors">

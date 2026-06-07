@@ -53,6 +53,16 @@ const Navbar: React.FC = () => {
   ];
 
   return (
+    <>
+    {/* Announcement bar */}
+    <div className="bg-ink text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 text-center">
+        <p className="text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.2em] text-white/80">
+          <span className="text-accent">✦</span>&nbsp; Handcrafted by a woman's delicate hands, with care — fine leather for everyone &nbsp;<span className="text-accent">✦</span>
+        </p>
+      </div>
+    </div>
+
     <header className="sticky top-0 z-30 bg-white border-b border-sand">
 
       {/* Search overlay */}
@@ -77,16 +87,21 @@ const Navbar: React.FC = () => {
       )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14 gap-6">
+        <div className="flex items-center justify-between h-[4.5rem] gap-6">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 flex-shrink-0">
-            <div className="w-7 h-7 bg-accent rounded flex items-center justify-center">
-              <span className="text-white font-display font-bold text-[10px]">NW</span>
+          <Link to="/" className="flex items-center gap-3 flex-shrink-0">
+            <div className="w-10 h-10 bg-accent rounded-md flex items-center justify-center shadow-sm">
+              <span className="text-white font-display font-bold text-sm tracking-tight">NW</span>
             </div>
-            <span className="font-display font-semibold text-base text-ink tracking-wide hidden sm:block">
-              Nie's Wears
-            </span>
+            <div className="leading-none">
+              <span className="block font-display font-bold text-xl sm:text-2xl text-ink tracking-tight">
+                Nie's Wears
+              </span>
+              <span className="hidden sm:block text-[8.5px] uppercase tracking-[0.28em] text-ink-muted mt-1">
+                Handcrafted Leather · Made by Hand
+              </span>
+            </div>
           </Link>
 
           {/* Desktop nav */}
@@ -228,6 +243,7 @@ const Navbar: React.FC = () => {
         </div>
       )}
     </header>
+    </>
   );
 };
 
