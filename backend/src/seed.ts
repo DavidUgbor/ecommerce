@@ -417,7 +417,7 @@ const products = [
     tags: 'sandals,flat,minimalist,nappa,everyday',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/20752060/pexels-photo-20752060.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/26925248/pexels-photo-26925248.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '36', stock: 10, priceModifier: 0 },
@@ -466,6 +466,27 @@ const products = [
       { type: 'SIZE', value: '36', stock: 10, priceModifier: 0 },
       { type: 'SIZE', value: '37', stock: 12, priceModifier: 0 },
       { type: 'SIZE', value: '38', stock: 13, priceModifier: 0 },
+      { type: 'SIZE', value: '39', stock: 10, priceModifier: 0 },
+    ],
+  },
+  {
+    name: 'Purple Leather Slide',
+    slug: 'purple-leather-slide',
+    description: 'A vibrant statement slide in smooth leather with a bold purple finish and contrasting black sole. Lightweight, easy to slip on, and crafted for those who wear colour with confidence.',
+    price: 109.99,
+    comparePrice: 139.99,
+    stock: 40,
+    sku: 'SL-004',
+    category: 'slippers',
+    tags: 'slippers,slide,purple,leather,statement',
+    featured: false,
+    images: [
+      'https://images.pexels.com/photos/27204307/pexels-photo-27204307.jpeg?auto=compress&cs=tinysrgb&w=800',
+    ],
+    variants: [
+      { type: 'SIZE', value: '36', stock: 10, priceModifier: 0 },
+      { type: 'SIZE', value: '37', stock: 10, priceModifier: 0 },
+      { type: 'SIZE', value: '38', stock: 10, priceModifier: 0 },
       { type: 'SIZE', value: '39', stock: 10, priceModifier: 0 },
     ],
   },
