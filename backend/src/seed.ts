@@ -333,7 +333,7 @@ const products = [
     tags: 'cardholder,slim,minimalist,cards',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/915917/pexels-photo-915917.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/4452402/pexels-photo-4452402.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Cognac', stock: 40, priceModifier: 0 },
