@@ -113,6 +113,69 @@ const products = [
       { type: 'SIZE', value: '43', stock: 10, priceModifier: 0 },
     ],
   },
+  {
+    name: "Men's Leather Loafer",
+    slug: 'mens-leather-loafer',
+    description: 'Refined full-grain leather loafers with a sleek silhouette and ornate detailing. A versatile slip-on that moves effortlessly between smart casual and formal — hand-finished with a leather sole and rubber heel insert.',
+    price: 259.99,
+    comparePrice: 319.99,
+    stock: 38,
+    sku: 'SH-005',
+    category: 'shoes',
+    tags: 'loafer,mens,leather,slip-on,formal',
+    featured: true,
+    images: [
+      'https://images.pexels.com/photos/29258015/pexels-photo-29258015.jpeg?auto=compress&cs=tinysrgb&w=800',
+    ],
+    variants: [
+      { type: 'SIZE', value: '40', stock: 8, priceModifier: 0 },
+      { type: 'SIZE', value: '41', stock: 10, priceModifier: 0 },
+      { type: 'SIZE', value: '42', stock: 10, priceModifier: 0 },
+      { type: 'SIZE', value: '43', stock: 10, priceModifier: 0 },
+    ],
+  },
+  {
+    name: 'White Leather Loafer',
+    slug: 'white-leather-loafer',
+    description: 'Crisp white leather loafers with a clean, contemporary profile. Hand-stitched moccasin construction in smooth calf leather — a bold statement piece that pairs effortlessly with casual and smart looks alike.',
+    price: 229.99,
+    comparePrice: 279.99,
+    stock: 30,
+    sku: 'SH-006',
+    category: 'shoes',
+    tags: 'loafer,white,leather,contemporary,statement',
+    featured: false,
+    images: [
+      'https://images.pexels.com/photos/7413278/pexels-photo-7413278.jpeg?auto=compress&cs=tinysrgb&w=800',
+    ],
+    variants: [
+      { type: 'SIZE', value: '37', stock: 7, priceModifier: 0 },
+      { type: 'SIZE', value: '38', stock: 8, priceModifier: 0 },
+      { type: 'SIZE', value: '39', stock: 8, priceModifier: 0 },
+      { type: 'SIZE', value: '40', stock: 7, priceModifier: 0 },
+    ],
+  },
+  {
+    name: 'Floral Leather Boot',
+    slug: 'floral-leather-boot',
+    description: 'A distinctive boot adorned with artisan floral details — crafted from supple leather with a cushioned insole and durable block heel. Where heritage craft meets bold expression, made for everyone who dares to bloom.',
+    price: 319.99,
+    comparePrice: 389.99,
+    stock: 28,
+    sku: 'SH-007',
+    category: 'shoes',
+    tags: 'boot,floral,leather,ankle,artisan',
+    featured: true,
+    images: [
+      'https://images.pexels.com/photos/15300927/pexels-photo-15300927.jpeg?auto=compress&cs=tinysrgb&w=800',
+    ],
+    variants: [
+      { type: 'SIZE', value: '37', stock: 6, priceModifier: 0 },
+      { type: 'SIZE', value: '38', stock: 8, priceModifier: 0 },
+      { type: 'SIZE', value: '39', stock: 8, priceModifier: 0 },
+      { type: 'SIZE', value: '40', stock: 6, priceModifier: 0 },
+    ],
+  },
   // Belts
   {
     name: 'Executive Dress Belt',
@@ -270,7 +333,7 @@ const products = [
     tags: 'cardholder,slim,minimalist,cards',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/33250/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/915917/pexels-photo-915917.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Cognac', stock: 40, priceModifier: 0 },
@@ -290,7 +353,7 @@ const products = [
     tags: 'zip,wallet,spacious,organizer',
     featured: true,
     images: [
-      'https://images.pexels.com/photos/6649420/pexels-photo-6649420.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/164637/pexels-photo-164637.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Burgundy', stock: 15, priceModifier: 0 },
@@ -419,7 +482,7 @@ const products = [
     tags: 'watch,strap,horween,leather',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/68201/pexels-photo-68201.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/5058216/pexels-photo-5058216.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '20mm', stock: 45, priceModifier: 0 },
@@ -438,7 +501,7 @@ const products = [
     tags: 'phone,case,leather,protection',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/13706809/pexels-photo-13706809.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/11067245/pexels-photo-11067245.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: 'iPhone 15', stock: 20, priceModifier: 0 },
