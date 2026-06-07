@@ -353,7 +353,7 @@ const products = [
     tags: 'zip,wallet,spacious,organizer',
     featured: true,
     images: [
-      'https://images.pexels.com/photos/164637/pexels-photo-164637.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/27467366/pexels-photo-27467366.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Burgundy', stock: 15, priceModifier: 0 },
