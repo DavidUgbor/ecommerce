@@ -6,19 +6,19 @@ const categories = [
     name: 'Shoes',
     slug: 'shoes',
     description: 'Premium handcrafted leather shoes for every occasion',
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=800&q=80',
   },
   {
     name: 'Belts',
     slug: 'belts',
     description: 'Genuine leather belts crafted to perfection',
-    image: 'https://images.unsplash.com/photo-1624222247344-550fb60fe8ff?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
   },
   {
     name: 'Bags',
     slug: 'bags',
     description: 'Luxury leather bags and handbags',
-    image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=800&q=80',
   },
   {
     name: 'Wallets',
@@ -30,7 +30,7 @@ const categories = [
     name: 'Accessories',
     slug: 'accessories',
     description: 'Leather accessories and small goods',
-    image: 'https://images.unsplash.com/photo-1611010344438-2f6e7ce79bdb?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800&q=80',
   },
 ];
 
@@ -48,8 +48,8 @@ const products = [
     tags: 'oxford,brogue,formal,leather,classic',
     featured: true,
     images: [
-      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
-      'https://images.unsplash.com/photo-1560343090-f0409e92791a?w=800&q=80',
+      'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=800&q=80',
+      'https://images.unsplash.com/photo-1449505278894-297fdb3edbc1?w=800&q=80',
     ],
     variants: [
       { type: 'SIZE', value: '40', stock: 8, priceModifier: 0 },
@@ -136,7 +136,7 @@ const products = [
     tags: 'dress,belt,formal,silver,executive',
     featured: true,
     images: [
-      'https://images.unsplash.com/photo-1624222247344-550fb60fe8ff?w=800&q=80',
+      'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
     ],
     variants: [
       { type: 'SIZE', value: '30"', stock: 15, priceModifier: 0 },
@@ -362,7 +362,7 @@ const products = [
     tags: 'watch,strap,horween,leather',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-1611010344438-2f6e7ce79bdb?w=800&q=80',
+      'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800&q=80',
     ],
     variants: [
       { type: 'SIZE', value: '20mm', stock: 45, priceModifier: 0 },
@@ -517,13 +517,18 @@ async function main() {
     console.log('Category created:', category.name);
   }
 
-  // Create products
+  // Create or update products
   for (const prod of products) {
     const { images, variants, category, ...productData } = prod;
 
     const existing = await prisma.product.findUnique({ where: { slug: productData.slug } });
     if (existing) {
-      console.log('Product already exists, skipping:', productData.name);
+      // Update images to fix any broken URLs
+      await prisma.productImage.deleteMany({ where: { productId: existing.id } });
+      await prisma.productImage.createMany({
+        data: images.map((url, i) => ({ productId: existing.id, url, alt: productData.name, order: i })),
+      });
+      console.log('Product updated:', productData.name);
       continue;
     }
 
@@ -532,11 +537,7 @@ async function main() {
         ...productData,
         categoryId: categoryMap[category],
         images: {
-          create: images.map((url, i) => ({
-            url,
-            alt: productData.name,
-            order: i,
-          })),
+          create: images.map((url, i) => ({ url, alt: productData.name, order: i })),
         },
         variants: {
           create: variants.map((v) => ({
