@@ -46,19 +46,10 @@ const HomePage: React.FC = () => {
     queryFn: () => api.get('/products?sort=newest&limit=4').then((r) => r.data),
   });
 
-  const { data: allProductsData } = useQuery({
-    queryKey: ['all-products-sale'],
-    queryFn: () => api.get('/products?limit=40').then((r) => r.data),
-  });
-
   const { data: categories } = useQuery({
     queryKey: ['categories'],
     queryFn: () => api.get('/categories').then((r) => r.data),
   });
-
-  const onSaleProducts: Product[] = (allProductsData?.products || [])
-    .filter((p: Product) => p.comparePrice && p.comparePrice > p.price)
-    .slice(0, 4);
 
   return (
     <div>
@@ -233,27 +224,6 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── ON SALE ──────────────────────────────────────── */}
-      {onSaleProducts.length > 0 && (
-        <section className="py-16 bg-page">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-end justify-between mb-8">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent mb-1">Limited Time</p>
-                <h2 className="font-display text-2xl font-bold text-ink">On Sale</h2>
-              </div>
-              <Link to="/products" className="text-xs uppercase tracking-widest text-ink-muted hover:text-ink transition-colors font-semibold flex items-center gap-1">
-                View all <ArrowRight className="w-3 h-3" />
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-              {onSaleProducts.map((p: Product) => (
-                <ProductCard key={p.id} product={p} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ── FAQ ──────────────────────────────────────────── */}
       <section className="py-16 bg-canvas border-t border-sand">
