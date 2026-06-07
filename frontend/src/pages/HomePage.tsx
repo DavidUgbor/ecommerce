@@ -121,23 +121,19 @@ const HomePage: React.FC = () => {
               </Link>
             </div>
 
-            {/* Trust indicators */}
-            <div className="flex flex-wrap items-center gap-6 mt-12">
-              <div className="text-center">
-                <div className="font-display text-3xl font-bold text-accent">10K+</div>
-                <div className="text-cream-DEFAULT/60 text-xs uppercase tracking-wider">Happy Customers</div>
+            {/* Trust badges */}
+            <div className="flex flex-wrap items-center gap-5 mt-12">
+              <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
+                <Truck className="w-4 h-4 text-accent" />
+                <span className="text-cream-DEFAULT/90 text-sm">Free shipping over $150</span>
               </div>
-              <div className="w-px h-10 bg-white/20" />
-              <div className="text-center">
-                <div className="font-display text-3xl font-bold text-accent">35+</div>
-                <div className="text-cream-DEFAULT/60 text-xs uppercase tracking-wider">Years of Craft</div>
+              <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
+                <RotateCcw className="w-4 h-4 text-accent" />
+                <span className="text-cream-DEFAULT/90 text-sm">30-day returns</span>
               </div>
-              <div className="w-px h-10 bg-white/20" />
-              <div className="text-center">
-                <div className="font-display text-3xl font-bold text-accent">4.9</div>
-                <div className="text-cream-DEFAULT/60 text-xs uppercase tracking-wider flex items-center gap-1">
-                  <Star className="w-3 h-3 fill-accent text-accent" /> Rating
-                </div>
+              <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
+                <Shield className="w-4 h-4 text-accent" />
+                <span className="text-cream-DEFAULT/90 text-sm">100% genuine leather</span>
               </div>
             </div>
           </div>
