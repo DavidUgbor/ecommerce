@@ -374,7 +374,7 @@ const products = [
     tags: 'sandals,leather,classic,summer,handcrafted',
     featured: true,
     images: [
-      'https://images.pexels.com/photos/2961991/pexels-photo-2961991.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/31129841/pexels-photo-31129841.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '36', stock: 8, priceModifier: 0 },
