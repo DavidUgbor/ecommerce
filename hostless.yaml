@@ -1,21 +1,18 @@
 build:
-  command: npm run build
   system: docker
   min_cpu: 0.1
   max_cpu: 0.5
   min_memory: 512
   max_memory: 1024
 dockerfile_path: Dockerfile
-working_directory: ""
-build_context_directory: ""
-pre_build_command: ""
-post_build_command: ""
-start_command: npm run start
+working_directory: /
+build_context_directory: .
 scaling:
-  min_cpu: 0.01
-  max_cpu: 0.1
-  min_memory: 128
-  max_memory: 256
+  trigger: http_requests
+  min_cpu: 0.05
+  max_cpu: 0.25
+  min_memory: 512
+  max_memory: 1024
   min_replicas: 1
   max_replicas: 1
 health_check:
@@ -26,3 +23,5 @@ workers: []
 review_apps:
   enabled: false
   ttl_days: 7
+  inherit_worker_processes: true
+  inherit_cron_jobs: true
