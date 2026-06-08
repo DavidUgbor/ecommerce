@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
               <span className="font-display font-semibold text-base tracking-wide">Nie's Wears</span>
             </div>
             <p className="text-white/60 text-xs leading-relaxed mb-5 max-w-[200px]">
-              Cut, stitched, and finished by hand in Surulere, Lagos. Built from high-quality leather that gets better with every wear.
+              Leather goods with character. From shoes to bags, wallets to sandals — each piece cut, stitched, and finished by hand. Built from high-quality leather that gets better with every wear.
             </p>
             <p className="text-white/40 text-[10px] uppercase tracking-widest mb-3">Follow</p>
             <div className="flex items-center gap-2">
