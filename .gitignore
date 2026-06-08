@@ -2,6 +2,7 @@
 .env
 .env.local
 .env.*.local
+hostless.env
 
 # Dependencies
 node_modules/
