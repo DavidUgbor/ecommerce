@@ -99,15 +99,6 @@ const LoginPage: React.FC = () => {
             </button>
           </form>
 
-          {/* Test credentials */}
-          <div className="mt-5 p-4 bg-white rounded-lg border border-gray-200">
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Test Accounts</p>
-            <div className="space-y-1 text-xs text-gray-600">
-              <p><span className="font-medium">Admin:</span> admin@leathergoods.com / admin123</p>
-              <p><span className="font-medium">User:</span> john@example.com / user1234</p>
-            </div>
-          </div>
-
           <p className="text-center text-sm text-gray-600 mt-6">
             Don't have an account?{' '}
             <Link to="/register" className="text-accent hover:text-accent-dark font-medium transition-colors">
@@ -120,7 +111,7 @@ const LoginPage: React.FC = () => {
       {/* Right: Image */}
       <div className="hidden lg:block flex-1 relative">
         <img
-          src="https://images.unsplash.com/photo-1547949003-9792a18a2601?w=1200&q=80"
+          src="https://images.pexels.com/photos/135620/pexels-photo-135620.jpeg?auto=compress&cs=tinysrgb&w=1200"
           alt="Premium Leather"
           className="absolute inset-0 w-full h-full object-cover"
         />

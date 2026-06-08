@@ -53,7 +53,7 @@ const RegisterPage: React.FC = () => {
       {/* Left: Image */}
       <div className="hidden lg:block flex-1 relative">
         <img
-          src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=1200&q=80"
+          src="https://images.pexels.com/photos/7595038/pexels-photo-7595038.jpeg?auto=compress&cs=tinysrgb&w=1200"
           alt="Leather Craftsmanship"
           className="absolute inset-0 w-full h-full object-cover"
         />

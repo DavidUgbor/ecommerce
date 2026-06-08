@@ -285,11 +285,11 @@ const CheckoutForm: React.FC = () => {
             <div className="space-y-3 mb-5 max-h-48 overflow-y-auto">
               {items.map((item) => {
                 const price = item.product.price + (item.variant?.priceModifier || 0);
-                const imageUrl = item.product.images?.[0]?.url || 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80';
+                const imageUrl = item.product.images?.[0]?.url || 'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800';
                 return (
                   <div key={item.id} className="flex gap-2 items-center">
                     <div className="relative">
-                      <img src={imageUrl} alt={item.product.name} className="w-12 h-12 rounded object-cover" onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80'; }} />
+                      <img src={imageUrl} alt={item.product.name} className="w-12 h-12 rounded object-cover" onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800'; }} />
                       <span className="absolute -top-1 -right-1 w-4 h-4 bg-primary-900 text-white text-xs rounded-full flex items-center justify-center">{item.quantity}</span>
                     </div>
                     <div className="flex-1 min-w-0">
