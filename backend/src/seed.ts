@@ -123,7 +123,7 @@ const products = [
     sku: 'SH-005',
     category: 'shoes',
     tags: 'loafer,mens,leather,slip-on,formal',
-    featured: true,
+    featured: false,
     images: [
       'https://images.pexels.com/photos/29258015/pexels-photo-29258015.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
@@ -165,7 +165,7 @@ const products = [
     sku: 'SH-007',
     category: 'shoes',
     tags: 'boot,floral,leather,ankle,artisan',
-    featured: true,
+    featured: false,
     images: [
       'https://images.pexels.com/photos/15300927/pexels-photo-15300927.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
@@ -187,7 +187,7 @@ const products = [
     sku: 'BL-001',
     category: 'belts',
     tags: 'dress,belt,formal,silver,executive',
-    featured: true,
+    featured: false,
     images: [
       'https://images.pexels.com/photos/6654763/pexels-photo-6654763.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
@@ -252,7 +252,7 @@ const products = [
     sku: 'BG-002',
     category: 'bags',
     tags: 'crossbody,satchel,casual,daily',
-    featured: true,
+    featured: false,
     images: [
       'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=800&q=80',
     ],
@@ -351,7 +351,7 @@ const products = [
     sku: 'WL-004',
     category: 'wallets',
     tags: 'zip,wallet,spacious,organizer',
-    featured: true,
+    featured: false,
     images: [
       'https://images.pexels.com/photos/27467366/pexels-photo-27467366.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
@@ -394,7 +394,7 @@ const products = [
     sku: 'SD-002',
     category: 'sandals',
     tags: 'sandals,black,leather,elegant,handcrafted',
-    featured: true,
+    featured: false,
     images: [
       'https://images.pexels.com/photos/26965812/pexels-photo-26965812.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
@@ -437,7 +437,7 @@ const products = [
     sku: 'SL-003',
     category: 'slippers',
     tags: 'slippers,slide,nappa,cork,footbed',
-    featured: true,
+    featured: false,
     images: [
       'https://images.pexels.com/photos/26925251/pexels-photo-26925251.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
@@ -458,7 +458,7 @@ const products = [
     sku: 'SL-001',
     category: 'slippers',
     tags: 'slippers,beaded,colorful,handcrafted,leather',
-    featured: true,
+    featured: false,
     images: [
       'https://images.pexels.com/photos/35633190/pexels-photo-35633190.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
