@@ -68,7 +68,7 @@ const RegisterPage: React.FC = () => {
         </div>
         <div className="absolute bottom-12 left-12 right-12">
           <div className="space-y-3">
-            {['Exclusive member discounts', 'Order tracking & history', 'Priority style support', 'Early access to Nie\'s new collections'].map((benefit) => (
+            {['Track your orders in one place', 'Save items to your wishlist', 'Faster checkout with saved addresses', 'Be first to hear about new drops'].map((benefit) => (
               <div key={benefit} className="flex items-center gap-3 text-cream-DEFAULT">
                 <div className="w-5 h-5 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
                   <Check className="w-3 h-3 text-white" />
@@ -91,7 +91,7 @@ const RegisterPage: React.FC = () => {
           </Link>
 
           <h1 className="font-display text-3xl font-bold text-primary-900 mb-1">Create your account</h1>
-          <p className="text-gray-500 mb-8">Join our community of women who love quality leather</p>
+          <p className="text-gray-500 mb-8">Create an account to track orders and save your favourites</p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -124,7 +124,7 @@ const RegisterPage: React.FC = () => {
                 type="tel"
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                placeholder="+1 234 567 8900"
+                placeholder="+234 801 234 5678"
                 className="input-field"
               />
             </div>
