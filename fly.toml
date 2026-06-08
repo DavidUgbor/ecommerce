@@ -1,0 +1,28 @@
+# Fly.io config for the Nie's Wears backend API.
+# Frontend is hosted separately on Vercel.
+app = "nieswears-api"
+primary_region = "jnb"  # Johannesburg — closest region to Lagos
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  NODE_ENV = "production"
+  PORT = "8080"
+  DATABASE_URL = "file:./data/prod.db"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false   # never sleep — no cold starts
+  auto_start_machines = true
+  min_machines_running = 1
+
+# Persistent disk so the SQLite database survives restarts/deploys.
+[[mounts]]
+  source = "nieswears_data"
+  destination = "/app/backend/data"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"
