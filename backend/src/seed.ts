@@ -49,49 +49,6 @@ const categories = [
 const products = [
   // Shoes
   {
-    name: 'Oxford Classic Brogue',
-    slug: 'oxford-classic-brogue',
-    description: 'Timeless full-grain leather Oxford shoes with intricate brogue detailing. Hand-stitched welt construction ensures durability and comfort for all-day wear. Perfect for formal occasions and business settings.',
-    price: 185000,
-    comparePrice: 225000,
-    stock: 45,
-    sku: 'SH-001',
-    category: 'shoes',
-    tags: 'oxford,brogue,formal,leather,classic',
-    featured: true,
-    images: [
-      'https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=800',
-    ],
-    variants: [
-      { type: 'SIZE', value: '40', stock: 8, priceModifier: 0 },
-      { type: 'SIZE', value: '41', stock: 10, priceModifier: 0 },
-      { type: 'SIZE', value: '42', stock: 12, priceModifier: 0 },
-      { type: 'SIZE', value: '43', stock: 10, priceModifier: 0 },
-      { type: 'SIZE', value: '44', stock: 5, priceModifier: 0 },
-    ],
-  },
-  {
-    name: 'Derby Wingtip Lace-Up',
-    slug: 'derby-wingtip-lace-up',
-    description: 'Classic derby shoes with elegant wingtip detailing. Crafted from premium vegetable-tanned leather that develops a beautiful patina over time. Open lacing system for a comfortable, relaxed fit.',
-    price: 162000,
-    comparePrice: null,
-    stock: 55,
-    sku: 'SH-003',
-    category: 'shoes',
-    tags: 'derby,wingtip,leather,classic',
-    featured: false,
-    images: [
-      'https://images.pexels.com/photos/29258015/pexels-photo-29258015.jpeg?auto=compress&cs=tinysrgb&w=800',
-    ],
-    variants: [
-      { type: 'SIZE', value: '40', stock: 10, priceModifier: 0 },
-      { type: 'SIZE', value: '41', stock: 15, priceModifier: 0 },
-      { type: 'SIZE', value: '42', stock: 15, priceModifier: 0 },
-      { type: 'SIZE', value: '43', stock: 15, priceModifier: 0 },
-    ],
-  },
-  {
     name: 'Loafer Penny Classic',
     slug: 'loafer-penny-classic',
     description: 'Effortlessly stylish penny loafers in smooth calf leather. The classic slip-on design features a leather sole with rubber heel for superior traction. Goes from casual to smart-casual with ease.',
@@ -101,7 +58,7 @@ const products = [
     sku: 'SH-004',
     category: 'shoes',
     tags: 'loafer,penny,casual,leather',
-    featured: false,
+    featured: true,
     images: [
       'https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
