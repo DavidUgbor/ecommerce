@@ -87,7 +87,7 @@ const HomePage: React.FC = () => {
               <em className="not-italic text-accent">With Character</em>
             </h1>
             <p className="text-ink-muted text-base leading-relaxed mb-5 max-w-sm">
-              From shoes to everyday accessories — each piece handcrafted with premium leather and timeless techniques. Durable, stylish, and designed to grow better with every wear.
+              From shoes to bags, wallets to sandals — each piece cut, stitched, and finished by hand. Built from high-quality leather that gets better with every wear.
             </p>
             <div className="flex items-center gap-4">
               <Link to="/products"
@@ -246,7 +246,7 @@ const HomePage: React.FC = () => {
       <section className="py-16 bg-ink">
         <div className="max-w-xl mx-auto px-4 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent mb-3">Stay Updated</p>
-          <h2 className="font-display text-3xl font-bold text-white mb-3">Get Nie's Latest</h2>
+          <h2 className="font-display text-3xl font-bold text-white mb-3">Never Miss a Drop</h2>
           <p className="text-white/60 text-sm mb-8">
             New arrivals and restocks, straight to your inbox. No spam, just leather.
           </p>
