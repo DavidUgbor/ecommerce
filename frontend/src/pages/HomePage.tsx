@@ -191,7 +191,7 @@ const HomePage: React.FC = () => {
                   Sculpted by Hand.<br />Meticulously Crafted.<br />Luxuriously Designed.
                 </h2>
                 <p className="text-white/70 text-sm leading-relaxed mb-6">
-                  Nie's Wears is a leather goods brand based in Surulere, Lagos. Every bag, shoe, wallet, and sandal is made by Nie herself — cut, stitched, and finished by hand. She works exclusively with high-quality leather, because she believes what you carry should last. Not fast fashion. Not mass-produced. Just real leather, made right.
+                  Nie's Wears is a leather goods brand based in Surulere, Lagos. Every piece — from bags to shoes, wallets, and sandals — is made by Nie herself, cut, stitched, and finished by hand. She works only with high-quality leather that ages beautifully and lasts for years. Just real leather, made right.
                 </p>
                 <p className="text-white/50 text-xs mb-8 italic">
                   "Every piece I make, I make like it's mine to keep."<br />— Nie, Founder & Maker
