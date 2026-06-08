@@ -109,7 +109,7 @@ const HomePage: React.FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-8 text-center">
             {[
               { icon: Truck,     text: 'Free shipping on orders over ₦50,000' },
-              { icon: RefreshCw, text: '30-day easy returns' },
+              { icon: RefreshCw, text: '7-day returns & exchanges' },
               { icon: Shield,    text: '100% genuine leather, always' },
             ].map(({ icon: Icon, text }) => (
               <div key={text} className="flex items-center gap-2 text-ink-muted text-xs">

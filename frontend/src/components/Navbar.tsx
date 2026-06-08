@@ -54,15 +54,6 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-    {/* Announcement bar */}
-    <div className="bg-ink text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 text-center">
-        <p className="text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.2em] text-white/80">
-          <span className="text-accent">✦</span>&nbsp; Real leather. Made by hand. Shipped from Lagos. &nbsp;<span className="text-accent">✦</span>
-        </p>
-      </div>
-    </div>
-
     <header className="sticky top-0 z-30 bg-white border-b border-sand">
 
       {/* Search overlay */}
