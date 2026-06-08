@@ -531,6 +531,16 @@ const products = [
 async function main() {
   console.log('Starting seed...');
 
+  // Skip seeding if the catalog is already populated — keeps restarts fast.
+  // Set RESEED=1 to force a full reseed (e.g. after changing product data/images).
+  if (process.env.RESEED !== '1') {
+    const productCount = await prisma.product.count();
+    if (productCount > 0) {
+      console.log(`Seed skipped — ${productCount} products already present.`);
+      return;
+    }
+  }
+
   // Create admin user
   const adminPassword = await bcrypt.hash('admin123', 10);
   const admin = await prisma.user.upsert({
