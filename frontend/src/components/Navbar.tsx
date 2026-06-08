@@ -93,7 +93,7 @@ const Navbar: React.FC = () => {
           <Link to="/" className="flex items-center gap-3 flex-shrink-0">
             <div className="w-10 h-10 overflow-hidden rounded-md shadow-sm flex-shrink-0 bg-accent">
               <img
-                src="/logo.jpg"
+                src="/logo.jpg.jpg"
                 alt="Nie's Wears"
                 className="w-full h-full object-cover object-top"
                 onError={(e) => {
