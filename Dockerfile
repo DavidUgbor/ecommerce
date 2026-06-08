@@ -1,35 +1,26 @@
-FROM node:20-alpine AS frontend-builder
-WORKDIR /app/frontend
-COPY frontend/package*.json ./
-RUN npm ci
-COPY frontend/ ./
-RUN npm run build
-
-FROM node:20-alpine AS backend-builder
-WORKDIR /app/backend
-COPY backend/package*.json ./
-RUN npm ci
-COPY backend/ ./
-# Provide a dummy URL so prisma generate works at build time
-ENV DATABASE_URL="file:./dev.db"
-RUN npx prisma generate
-RUN npm run build
-
-FROM node:20-alpine AS runner
+FROM node:20-alpine
 WORKDIR /app
+
 RUN apk add --no-cache openssl
 
-COPY --from=backend-builder /app/backend/dist ./dist
-COPY --from=backend-builder /app/backend/prisma ./prisma
-COPY --from=backend-builder /app/backend/node_modules ./node_modules
-COPY --from=backend-builder /app/backend/package.json ./package.json
-COPY --from=frontend-builder /app/frontend/dist ./frontend/dist
+# Build frontend
+COPY frontend/package*.json ./frontend/
+RUN npm ci --prefix frontend
+COPY frontend/ ./frontend/
+RUN npm run build --prefix frontend
 
+# Build backend
+COPY backend/package*.json ./backend/
+RUN npm ci --prefix backend
+COPY backend/ ./backend/
+ENV DATABASE_URL="file:./dev.db"
+RUN cd backend && npx prisma generate && npm run build
+
+# Run from backend directory so process.cwd() and all relative paths resolve correctly
+WORKDIR /app/backend
 RUN mkdir -p uploads data
 
 ENV NODE_ENV=production
-# Default DATABASE_URL — override via Render/Railway env vars
 ENV DATABASE_URL="file:./data/prod.db"
 
-# Sync schema, seed, start
-CMD ["sh", "-c", "mkdir -p data && npx prisma db push --accept-data-loss && (node dist/seed.js || echo 'seed already done') && node dist/server.js"]
+CMD ["sh", "-c", "npx prisma db push --accept-data-loss && node dist/seed.js && node dist/server.js"]
