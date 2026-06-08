@@ -16,18 +16,11 @@ import paymentsRoutes from './routes/payments.routes';
 
 const app = express();
 
-// CORS
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:3000',
-  ...(process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',') : []),
-];
+// CORS — public storefront API: reflect any origin so the frontend can be
+// hosted anywhere (Vercel, Cloudflare, etc.). JWT guards protected routes.
 app.use(
   cors({
-    origin: (origin, cb) => {
-      if (!origin || allowedOrigins.some((o) => origin.startsWith(o))) return cb(null, true);
-      cb(new Error('Not allowed by CORS'));
-    },
+    origin: true,
     credentials: true,
   })
 );
