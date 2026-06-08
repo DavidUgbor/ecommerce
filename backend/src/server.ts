@@ -1,5 +1,6 @@
 import app from './app';
 import prisma from './config/database';
+import { runSeed } from './seed';
 
 const PORT = parseInt(process.env.PORT || '5000', 10);
 
@@ -11,6 +12,12 @@ async function startServer() {
     app.listen(PORT, '0.0.0.0', () => {
       console.log(`Server running on 0.0.0.0:${PORT}`);
       console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+
+      // Seed in the background so the API is available immediately.
+      // Failures here never take the server down.
+      runSeed()
+        .then(() => console.log('Background seed finished'))
+        .catch((err) => console.error('Background seed failed:', err));
     });
   } catch (error) {
     console.error('Failed to start server:', error);

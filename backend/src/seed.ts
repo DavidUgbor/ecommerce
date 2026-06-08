@@ -528,7 +528,7 @@ const products = [
   },
 ];
 
-async function main() {
+export async function runSeed() {
   console.log('Starting seed...');
 
   // Skip seeding if the catalog is already populated — keeps restarts fast.
@@ -669,11 +669,15 @@ async function main() {
   console.log('WELCOME20 - $20 off orders over $150');
 }
 
-main()
-  .catch((e) => {
-    console.error('Seed failed:', e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+// Only run standalone (e.g. `node dist/seed.js`) — when imported by the server
+// it's invoked via runSeed() without disconnecting the shared Prisma client.
+if (require.main === module) {
+  runSeed()
+    .catch((e) => {
+      console.error('Seed failed:', e);
+      process.exit(1);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
+}
