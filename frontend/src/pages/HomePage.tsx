@@ -186,7 +186,7 @@ const HomePage: React.FC = () => {
             {/* Text */}
             <div className="flex items-center px-8 sm:px-12 lg:px-16 py-14 bg-ink">
               <div className="max-w-sm">
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent mb-4">Our Story</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent mb-4">The Craft</p>
                 <h2 className="font-display text-3xl sm:text-4xl font-bold text-white leading-tight mb-5">
                   Sculpted by Hand.<br />Meticulously Crafted.<br />Luxuriously Designed.
                 </h2>
