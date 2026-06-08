@@ -151,11 +151,11 @@ const ProductDetailPage: React.FC = () => {
             {/* Main image */}
             <div className="relative rounded-xl overflow-hidden bg-white shadow-luxury aspect-square">
               <img
-                src={product.images?.[selectedImageIndex]?.url || 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80'}
+                src={product.images?.[selectedImageIndex]?.url || 'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800'}
                 alt={product.images?.[selectedImageIndex]?.alt || product.name}
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80';
+                  (e.target as HTMLImageElement).src = 'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800';
                 }}
               />
               {discount > 0 && (
@@ -200,7 +200,7 @@ const ProductDetailPage: React.FC = () => {
                       alt={img.alt || product.name}
                       className="w-full h-full object-cover"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80';
+                        (e.target as HTMLImageElement).src = 'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800';
                       }}
                     />
                   </button>

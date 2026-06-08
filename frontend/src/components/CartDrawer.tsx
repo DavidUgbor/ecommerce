@@ -68,7 +68,7 @@ const CartDrawer: React.FC = () => {
             <div className="px-4 space-y-4">
               {items.map((item) => {
                 const itemPrice = item.product.price + (item.variant?.priceModifier || 0);
-                const imageUrl = item.product.images?.[0]?.url || 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80';
+                const imageUrl = item.product.images?.[0]?.url || 'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800';
 
                 return (
                   <div key={item.id} className="flex gap-3 bg-cream-DEFAULT rounded-lg p-3">
@@ -78,7 +78,7 @@ const CartDrawer: React.FC = () => {
                         alt={item.product.name}
                         className="w-20 h-20 object-cover rounded-md"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80';
+                          (e.target as HTMLImageElement).src = 'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800';
                         }}
                       />
                     </Link>

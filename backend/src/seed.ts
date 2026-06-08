@@ -6,7 +6,7 @@ const categories = [
     name: 'Shoes',
     slug: 'shoes',
     description: 'Premium handcrafted leather shoes for every occasion',
-    image: 'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=800&q=80',
+    image: 'https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     name: 'Belts',
@@ -18,13 +18,13 @@ const categories = [
     name: 'Bags',
     slug: 'bags',
     description: 'Luxury leather bags and handbags',
-    image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=800&q=80',
+    image: 'https://images.pexels.com/photos/7595038/pexels-photo-7595038.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     name: 'Wallets',
     slug: 'wallets',
     description: 'Slim and classic leather wallets',
-    image: 'https://images.unsplash.com/photo-1627123424574-724758594e93?w=800&q=80',
+    image: 'https://images.pexels.com/photos/13225343/pexels-photo-13225343.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     name: 'Accessories',
@@ -60,8 +60,7 @@ const products = [
     tags: 'oxford,brogue,formal,leather,classic',
     featured: true,
     images: [
-      'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=800&q=80',
-      'https://images.unsplash.com/photo-1449505278894-297fdb3edbc1?w=800&q=80',
+      'https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '40', stock: 8, priceModifier: 0 },
@@ -83,7 +82,7 @@ const products = [
     tags: 'derby,wingtip,leather,classic',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-1449505278894-297fdb3edbc1?w=800&q=80',
+      'https://images.pexels.com/photos/29258015/pexels-photo-29258015.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'SIZE', value: '40', stock: 10, priceModifier: 0 },
@@ -254,7 +253,7 @@ const products = [
     tags: 'crossbody,satchel,casual,daily',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=800&q=80',
+      'https://images.pexels.com/photos/3778212/pexels-photo-3778212.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Cognac', stock: 12, priceModifier: 0 },
@@ -274,7 +273,7 @@ const products = [
     tags: 'tote,spacious,work,shopping',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=80',
+      'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Caramel', stock: 10, priceModifier: 0 },
@@ -293,7 +292,7 @@ const products = [
     tags: 'messenger,vintage,laptop,pull-up',
     featured: false,
     images: [
-      'https://images.unsplash.com/photo-1473188588951-666fce8e7c68?w=800&q=80',
+      'https://images.pexels.com/photos/7595038/pexels-photo-7595038.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Whiskey', stock: 8, priceModifier: 0 },
