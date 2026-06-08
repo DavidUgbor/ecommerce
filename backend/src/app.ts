@@ -17,13 +17,17 @@ import paymentsRoutes from './routes/payments.routes';
 const app = express();
 
 // CORS
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  ...(process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',') : []),
+];
 app.use(
   cors({
-    origin: [
-      'http://localhost:5173',
-      'http://localhost:3000',
-      process.env.FRONTEND_URL || 'http://localhost:5173',
-    ],
+    origin: (origin, cb) => {
+      if (!origin || allowedOrigins.some((o) => origin.startsWith(o))) return cb(null, true);
+      cb(new Error('Not allowed by CORS'));
+    },
     credentials: true,
   })
 );
