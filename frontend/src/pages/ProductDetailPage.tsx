@@ -360,9 +360,9 @@ const ProductDetailPage: React.FC = () => {
             {/* Benefits */}
             <div className="border-t border-gray-100 pt-5 space-y-3">
               {[
-                { icon: Truck, text: 'Free shipping on orders over $150' },
-                { icon: RotateCcw, text: '30-day hassle-free returns' },
-                { icon: Shield, text: '2-year quality guarantee' },
+                { icon: Truck, text: 'Free shipping on orders over ₦50,000' },
+                { icon: RotateCcw, text: '7-day exchanges' },
+                { icon: Shield, text: '100% genuine leather, always' },
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3 text-sm text-gray-600">
                   <item.icon className="w-4 h-4 text-accent flex-shrink-0" />

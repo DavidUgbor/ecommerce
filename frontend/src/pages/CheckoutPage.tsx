@@ -53,7 +53,7 @@ const CheckoutForm: React.FC = () => {
     isDefault: false,
   });
 
-  const shipping = total > 150 ? 0 : 15;
+  const shipping = total > 50000 ? 0 : 3500;
   const tax = (total - discount) * 0.075;
   const orderTotal = total - discount + shipping + tax;
 
@@ -271,7 +271,7 @@ const CheckoutForm: React.FC = () => {
               <CardElement options={cardElementOptions} />
             </div>
             <p className="text-xs text-gray-400 mt-2">
-              🔒 Your payment info is encrypted and secure. Test: 4242 4242 4242 4242
+              🔒 Your payment info is encrypted and secure.
             </p>
           </div>
         </div>

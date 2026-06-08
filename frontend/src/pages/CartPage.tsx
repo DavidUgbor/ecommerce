@@ -17,7 +17,7 @@ const CartPage: React.FC = () => {
   const [couponError, setCouponError] = useState('');
   const [discount, setDiscount] = useState(0);
 
-  const shipping = total > 150 ? 0 : 15;
+  const shipping = total > 50000 ? 0 : 3500;
   const tax = (total - discount) * 0.075;
   const orderTotal = total - discount + shipping + tax;
 

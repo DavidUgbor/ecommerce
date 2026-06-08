@@ -119,9 +119,9 @@ const LoginPage: React.FC = () => {
         <div className="absolute inset-0 flex items-center justify-center p-12">
           <blockquote className="text-center">
             <p className="font-display text-3xl font-semibold text-cream-DEFAULT italic leading-relaxed">
-              "Quality is remembered long after the price is forgotten."
+              "Every piece I make, I make like it's mine to keep."
             </p>
-            <footer className="text-accent mt-4 font-medium">— Aldo Gucci</footer>
+            <footer className="text-accent mt-4 font-medium">— Nie, Founder & Maker</footer>
           </blockquote>
         </div>
       </div>
