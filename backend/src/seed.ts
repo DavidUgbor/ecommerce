@@ -189,8 +189,7 @@ const products = [
     tags: 'briefcase,laptop,work,professional,leather',
     featured: true,
     images: [
-      'https://images.pexels.com/photos/7595038/pexels-photo-7595038.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/3778212/pexels-photo-3778212.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/2433862/pexels-photo-2433862.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Tan', stock: 8, priceModifier: 0 },
@@ -210,7 +209,7 @@ const products = [
     tags: 'crossbody,satchel,casual,daily',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/3778212/pexels-photo-3778212.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/157888/pexels-photo-157888.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Cognac', stock: 12, priceModifier: 0 },
@@ -230,7 +229,7 @@ const products = [
     tags: 'tote,spacious,work,shopping',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/3777932/pexels-photo-3777932.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Caramel', stock: 10, priceModifier: 0 },
@@ -249,7 +248,7 @@ const products = [
     tags: 'messenger,vintage,laptop,pull-up',
     featured: false,
     images: [
-      'https://images.pexels.com/photos/7595038/pexels-photo-7595038.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/167703/pexels-photo-167703.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
     variants: [
       { type: 'COLOR', value: 'Whiskey', stock: 8, priceModifier: 0 },
