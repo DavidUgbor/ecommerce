@@ -91,8 +91,17 @@ const Navbar: React.FC = () => {
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 flex-shrink-0">
-            <div className="w-10 h-10 bg-accent rounded-md flex items-center justify-center shadow-sm">
-              <span className="text-white font-display font-bold text-sm tracking-tight">NW</span>
+            <div className="w-10 h-10 overflow-hidden rounded-md shadow-sm flex-shrink-0 bg-accent">
+              <img
+                src="/logo.jpg"
+                alt="Nie's Wears"
+                className="w-full h-full object-cover object-top"
+                onError={(e) => {
+                  const el = e.target as HTMLImageElement;
+                  el.style.display = 'none';
+                  el.parentElement!.innerHTML = '<span class="w-full h-full flex items-center justify-center text-white font-bold text-sm">NW</span>';
+                }}
+              />
             </div>
             <div className="leading-none">
               <span className="block font-display font-bold text-xl sm:text-2xl text-ink tracking-tight">
