@@ -4,7 +4,6 @@ import { Heart, ShoppingCart, Star } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useCartStore } from '../store/cartStore';
 import { useWishlistStore } from '../store/wishlistStore';
-import { useAuthStore } from '../store/authStore';
 import { formatPrice } from '../lib/format';
 
 export interface Product {
@@ -28,7 +27,6 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const [adding, setAdding] = useState(false);
   const { addItem, openCart } = useCartStore();
   const { toggle, isInWishlist } = useWishlistStore();
-  const { isAuthenticated } = useAuthStore();
 
   const inWishlist = isInWishlist(product.id);
   const discount = product.comparePrice
@@ -38,7 +36,6 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 
   const handleCart = async (e: React.MouseEvent) => {
     e.preventDefault(); e.stopPropagation();
-    if (!isAuthenticated) { toast.error('Please log in to add items to cart'); return; }
     if (product.stock === 0) { toast.error('Out of stock'); return; }
     setAdding(true);
     try {
@@ -52,7 +49,6 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 
   const handleWishlist = async (e: React.MouseEvent) => {
     e.preventDefault(); e.stopPropagation();
-    if (!isAuthenticated) { toast.error('Please log in to manage wishlist'); return; }
     try {
       await toggle(product.id);
       toast.success(inWishlist ? 'Removed from wishlist' : 'Added to wishlist');

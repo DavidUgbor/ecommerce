@@ -1,38 +1,44 @@
-import axios from 'axios';
+// Static API client — drop-in replacement for the axios backend client.
+// The storefront is fully self-contained: product/category reads are served
+// from the bundled catalog, so the site runs on Vercel with no backend.
+import { queryProducts, getProductBySlug, getProductById, getReviews, categories } from './catalog';
 
-const api = axios.create({
-  baseURL: (import.meta.env.VITE_API_URL || '') + '/api',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
+const ok = <T>(data: T): Promise<{ data: T }> => Promise.resolve({ data });
 
-// Request interceptor - add JWT token
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+function handleGet(url: string): Promise<{ data: any }> {
+  const [path, qs = ''] = url.split('?');
+  const search = new URLSearchParams(qs);
 
-// Response interceptor - handle auth errors
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response?.status === 401) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      // Only redirect if not already on auth pages
-      if (!window.location.pathname.includes('/login') && !window.location.pathname.includes('/register')) {
-        window.location.href = '/login';
-      }
-    }
-    return Promise.reject(error);
+  if (path === '/categories') return ok(categories);
+
+  if (path === '/products') return ok(queryProducts(search));
+
+  // /products/:id/reviews
+  const reviewMatch = path.match(/^\/products\/([^/]+)\/reviews$/);
+  if (reviewMatch) return ok(getReviews(reviewMatch[1]));
+
+  // /products/:slug  (detail) — try slug first, fall back to id
+  const detailMatch = path.match(/^\/products\/([^/]+)$/);
+  if (detailMatch) {
+    const key = detailMatch[1];
+    const product = getProductBySlug(key) || getProductById(key);
+    if (product) return ok(product);
+    return Promise.reject({ response: { status: 404, data: { message: 'Not found' } } });
   }
-);
+
+  return Promise.reject({ response: { status: 404, data: { message: 'Not found' } } });
+}
+
+const notAvailable = (..._args: any[]): Promise<{ data: any }> =>
+  Promise.reject({
+    response: { status: 503, data: { message: 'This action is handled directly with Nie by email.' } },
+  });
+
+const api = {
+  get: (url: string, ..._args: any[]) => handleGet(url),
+  post: notAvailable,
+  put: notAvailable,
+  delete: notAvailable,
+};
 
 export default api;

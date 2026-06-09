@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import api from '../lib/api';
-import { useAuthStore } from './authStore';
+import { persist } from 'zustand/middleware';
+import { getProductById } from '../lib/catalog';
 
 export interface WishlistItem {
   id: string;
@@ -28,43 +28,49 @@ interface WishlistState {
   clearLocal: () => void;
 }
 
-export const useWishlistStore = create<WishlistState>((set, get) => ({
-  items: [],
-  isLoading: false,
+export const useWishlistStore = create<WishlistState>()(
+  persist(
+    (set, get) => ({
+      items: [],
+      isLoading: false,
 
-  fetchWishlist: async () => {
-    const { isAuthenticated } = useAuthStore.getState();
-    if (!isAuthenticated) return;
-    set({ isLoading: true });
-    try {
-      const res = await api.get('/wishlist');
-      set({ items: res.data, isLoading: false });
-    } catch {
-      set({ isLoading: false });
-    }
-  },
+      fetchWishlist: async () => {
+        // Local wishlist — nothing to fetch.
+      },
 
-  toggle: async (productId) => {
-    const { isAuthenticated } = useAuthStore.getState();
-    if (!isAuthenticated) throw new Error('Please log in to manage wishlist');
+      toggle: async (productId) => {
+        const inWishlist = get().isInWishlist(productId);
+        if (inWishlist) {
+          set((state) => ({
+            items: state.items.filter((item) => item.productId !== productId),
+          }));
+          return;
+        }
+        const product = getProductById(productId);
+        if (!product) throw new Error('Product not found');
+        const item: WishlistItem = {
+          id: `${productId}-${Date.now()}`,
+          userId: 'local',
+          productId,
+          product: {
+            id: product.id,
+            name: product.name,
+            slug: product.slug,
+            price: product.price,
+            comparePrice: product.comparePrice ?? null,
+            avgRating: product.avgRating || 0,
+            reviewCount: product.reviewCount || 0,
+            images: product.images || [],
+            category: product.category,
+          },
+        };
+        set((state) => ({ items: [...state.items, item] }));
+      },
 
-    const inWishlist = get().isInWishlist(productId);
-    if (inWishlist) {
-      await api.delete(`/wishlist/${productId}`);
-      set((state) => ({
-        items: state.items.filter((item) => item.productId !== productId),
-      }));
-    } else {
-      const res = await api.post(`/wishlist/${productId}`);
-      set((state) => ({ items: [...state.items, res.data] }));
-    }
-  },
+      isInWishlist: (productId) => get().items.some((item) => item.productId === productId),
 
-  isInWishlist: (productId) => {
-    return get().items.some((item) => item.productId === productId);
-  },
-
-  clearLocal: () => {
-    set({ items: [] });
-  },
-}));
+      clearLocal: () => set({ items: [] }),
+    }),
+    { name: 'nies-wishlist', partialize: (state) => ({ items: state.items }) }
+  )
+);

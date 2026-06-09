@@ -1,38 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Trash2, Plus, Minus, Tag, ArrowRight, ShoppingBag } from 'lucide-react';
-import toast from 'react-hot-toast';
-import api from '../lib/api';
+import { Trash2, Plus, Minus, ArrowRight, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '../store/cartStore';
-import { useAuthStore } from '../store/authStore';
 import Breadcrumb from '../components/Breadcrumb';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { formatPrice } from '../lib/format';
 
 const CartPage: React.FC = () => {
   const { items, total, isLoading, updateQuantity, removeItem, clearCart } = useCartStore();
-  const { isAuthenticated } = useAuthStore();
   const navigate = useNavigate();
-  const [couponCode, setCouponCode] = useState('');
-  const [couponError, setCouponError] = useState('');
-  const [discount, setDiscount] = useState(0);
 
   const shipping = total > 50000 ? 0 : 3500;
-  const tax = (total - discount) * 0.075;
-  const orderTotal = total - discount + shipping + tax;
-
-  const handleApplyCoupon = async () => {
-    if (!couponCode.trim()) return;
-    try {
-      const res = await api.post('/orders/validate-coupon', { code: couponCode, subtotal: total });
-      setDiscount(res.data.discount || 0);
-      setCouponError('');
-      toast.success('Coupon applied!');
-    } catch (err: any) {
-      setCouponError(err?.response?.data?.message || 'Invalid coupon');
-      setDiscount(0);
-    }
-  };
+  const orderTotal = total + shipping;
 
   if (isLoading) {
     return (
@@ -166,52 +145,17 @@ const CartPage: React.FC = () => {
                   <span>Subtotal ({items.reduce((s, i) => s + i.quantity, 0)} items)</span>
                   <span className="font-medium text-primary-900">{formatPrice(total)}</span>
                 </div>
-                {discount > 0 && (
-                  <div className="flex justify-between text-sm text-green-600">
-                    <span>Discount</span>
-                    <span>-{formatPrice(discount)}</span>
-                  </div>
-                )}
                 <div className="flex justify-between text-sm text-gray-600">
-                  <span>Shipping</span>
+                  <span>Delivery</span>
                   <span className={shipping === 0 ? 'text-green-600 font-medium' : 'font-medium text-primary-900'}>
                     {shipping === 0 ? 'FREE' : formatPrice(shipping)}
                   </span>
                 </div>
-                <div className="flex justify-between text-sm text-gray-600">
-                  <span>Tax (7.5%)</span>
-                  <span className="font-medium text-primary-900">{formatPrice(tax)}</span>
-                </div>
                 {shipping > 0 && (
                   <p className="text-xs text-accent">
-                    Add {formatPrice(50000 - total)} more for free shipping
+                    Add {formatPrice(50000 - total)} more for free delivery
                   </p>
                 )}
-              </div>
-
-              {/* Coupon */}
-              <div className="mb-5">
-                <label className="block text-sm font-medium text-primary-900 mb-2">
-                  <Tag className="w-3.5 h-3.5 inline mr-1" />
-                  Coupon Code
-                </label>
-                <div className="flex gap-2">
-                  <input
-                    type="text"
-                    value={couponCode}
-                    onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
-                    placeholder="e.g. NIES10"
-                    className="flex-1 border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 uppercase"
-                  />
-                  <button
-                    onClick={handleApplyCoupon}
-                    className="px-4 py-2.5 bg-primary-900 text-white rounded text-sm hover:bg-primary-800 transition-colors"
-                  >
-                    Apply
-                  </button>
-                </div>
-                {couponError && <p className="text-red-500 text-xs mt-1">{couponError}</p>}
-                <p className="text-xs text-gray-400 mt-1">Try: NIES10 or WELCOME20</p>
               </div>
 
               <div className="border-t border-gray-100 pt-4 mb-5">
@@ -223,28 +167,16 @@ const CartPage: React.FC = () => {
                 </div>
               </div>
 
-              {isAuthenticated ? (
-                <button
-                  onClick={() => navigate('/checkout')}
-                  className="btn-primary w-full justify-center text-base py-4 shadow-luxury"
-                >
-                  Proceed to Checkout
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-              ) : (
-                <div className="space-y-2">
-                  <Link to="/login" className="btn-primary w-full justify-center text-base py-4">
-                    Sign In to Checkout
-                  </Link>
-                  <Link to="/register" className="btn-secondary w-full justify-center text-sm">
-                    Create Account
-                  </Link>
-                </div>
-              )}
+              <button
+                onClick={() => navigate('/checkout')}
+                className="btn-primary w-full justify-center text-base py-4 shadow-luxury"
+              >
+                Place Order
+                <ArrowRight className="w-5 h-5" />
+              </button>
 
-              {/* Payment security */}
               <p className="text-xs text-gray-400 text-center mt-4">
-                🔒 Secure checkout powered by Stripe
+                Order directly from Nie by email or WhatsApp.
               </p>
             </div>
           </div>

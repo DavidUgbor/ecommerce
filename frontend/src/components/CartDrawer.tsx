@@ -141,7 +141,7 @@ const CartDrawer: React.FC = () => {
               <span className="font-bold text-primary-900 text-lg">{formatPrice(total)}</span>
             </div>
             <p className="text-xs text-gray-500 mb-4 text-center">
-              Shipping & taxes calculated at checkout
+              Delivery confirmed with Nie when you order
             </p>
             <div className="space-y-2">
               <Link
@@ -149,7 +149,7 @@ const CartDrawer: React.FC = () => {
                 onClick={closeCart}
                 className="btn-primary w-full justify-center"
               >
-                Checkout
+                Place Order
               </Link>
               <Link
                 to="/cart"

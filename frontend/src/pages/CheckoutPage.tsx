@@ -1,389 +1,182 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { loadStripe } from '@stripe/stripe-js';
-import {
-  Elements,
-  CardElement,
-  useStripe,
-  useElements,
-} from '@stripe/react-stripe-js';
-import { Plus, MapPin, Truck, Check } from 'lucide-react';
-import toast from 'react-hot-toast';
-import api from '../lib/api';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ShoppingBag, ArrowRight, Mail, MessageCircle } from 'lucide-react';
 import { useCartStore } from '../store/cartStore';
-import { useAuthStore } from '../store/authStore';
 import Breadcrumb from '../components/Breadcrumb';
-import LoadingSpinner from '../components/LoadingSpinner';
 import { formatPrice } from '../lib/format';
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY || 'pk_test_placeholder');
-
-const cardElementOptions = {
-  style: {
-    base: {
-      fontSize: '16px',
-      color: '#3D1A00',
-      '::placeholder': { color: '#aab7c4' },
-    },
-    invalid: { color: '#e5424d' },
-  },
-};
-
-const CheckoutForm: React.FC = () => {
-  const stripe = useStripe();
-  const elements = useElements();
-  const navigate = useNavigate();
-
-  const { items, total, clearLocal } = useCartStore();
-  const { user, fetchMe } = useAuthStore();
-  const [addresses, setAddresses] = useState<any[]>([]);
-  const [selectedAddressId, setSelectedAddressId] = useState('');
-  const [isAddingAddress, setIsAddingAddress] = useState(false);
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [couponCode, setCouponCode] = useState('');
-  const [discount, setDiscount] = useState(0);
-  const [newAddress, setNewAddress] = useState({
-    fullName: user?.name || '',
-    phone: user?.phone || '',
-    street: '',
-    city: '',
-    state: '',
-    country: 'Nigeria',
-    zipCode: '',
-    isDefault: false,
-  });
-
-  const shipping = total > 50000 ? 0 : 3500;
-  const tax = (total - discount) * 0.075;
-  const orderTotal = total - discount + shipping + tax;
-
-  useEffect(() => {
-    fetchAddresses();
-  }, []);
-
-  const fetchAddresses = async () => {
-    try {
-      const res = await api.get('/auth/me');
-      const addrs = res.data.addresses || [];
-      setAddresses(addrs);
-      const defaultAddr = addrs.find((a: any) => a.isDefault);
-      if (defaultAddr) setSelectedAddressId(defaultAddr.id);
-      else if (addrs.length > 0) setSelectedAddressId(addrs[0].id);
-    } catch {
-      // silently fail
-    }
-  };
-
-  const handleAddAddress = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      await api.post('/auth/addresses', newAddress);
-      await fetchAddresses();
-      setIsAddingAddress(false);
-      toast.success('Address added!');
-    } catch (err: any) {
-      toast.error(err?.response?.data?.message || 'Failed to add address');
-    }
-  };
-
-  const handleApplyCoupon = async () => {
-    if (!couponCode.trim()) return;
-    try {
-      // Simple validation without a dedicated endpoint
-      toast.success('Coupon will be applied at order creation');
-    } catch {
-      toast.error('Invalid coupon');
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!stripe || !elements) return;
-    if (!selectedAddressId) { toast.error('Please select a delivery address'); return; }
-    if (items.length === 0) { toast.error('Your cart is empty'); return; }
-
-    setIsProcessing(true);
-
-    try {
-      // Create payment intent
-      const intentRes = await api.post('/payments/create-intent', {
-        amount: orderTotal,
-        currency: 'usd',
-      });
-      const { clientSecret, paymentIntentId } = intentRes.data;
-
-      // Confirm payment
-      const cardElement = elements.getElement(CardElement);
-      if (!cardElement) throw new Error('Card element not found');
-
-      const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: cardElement,
-          billing_details: { name: user?.name, email: user?.email },
-        },
-      });
-
-      if (error) {
-        toast.error(error.message || 'Payment failed');
-        setIsProcessing(false);
-        return;
-      }
-
-      if (paymentIntent?.status === 'succeeded') {
-        // Create order
-        const orderRes = await api.post('/orders', {
-          addressId: selectedAddressId,
-          paymentIntentId,
-          couponCode: couponCode || undefined,
-        });
-
-        clearLocal();
-        toast.success('Order placed successfully!');
-        navigate(`/orders/${orderRes.data.id}`);
-      }
-    } catch (err: any) {
-      toast.error(err?.response?.data?.message || 'Order failed. Please try again.');
-    } finally {
-      setIsProcessing(false);
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left: Delivery & Payment */}
-        <div className="lg:col-span-2 space-y-6">
-          {/* Delivery Address */}
-          <div className="bg-white rounded-xl shadow-luxury p-6">
-            <div className="flex items-center justify-between mb-5">
-              <h2 className="font-display text-xl font-bold text-primary-900 flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-accent" />
-                Delivery Address
-              </h2>
-              <button
-                type="button"
-                onClick={() => setIsAddingAddress(!isAddingAddress)}
-                className="text-sm text-accent hover:text-accent-dark font-medium flex items-center gap-1"
-              >
-                <Plus className="w-4 h-4" />
-                Add New
-              </button>
-            </div>
-
-            {/* Add address form */}
-            {isAddingAddress && (
-              <div className="mb-5 p-4 bg-cream-DEFAULT rounded-lg border border-gray-100">
-                <h3 className="font-semibold text-primary-900 mb-4 text-sm">New Address</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {[
-                    { key: 'fullName', label: 'Full Name' },
-                    { key: 'phone', label: 'Phone' },
-                    { key: 'street', label: 'Street Address', full: true },
-                    { key: 'city', label: 'City' },
-                    { key: 'state', label: 'State' },
-                    { key: 'country', label: 'Country' },
-                    { key: 'zipCode', label: 'Zip Code' },
-                  ].map((field) => (
-                    <div key={field.key} className={field.full ? 'sm:col-span-2' : ''}>
-                      <label className="block text-xs font-medium text-gray-600 mb-1">{field.label}</label>
-                      <input
-                        type="text"
-                        value={(newAddress as any)[field.key]}
-                        onChange={(e) => setNewAddress({ ...newAddress, [field.key]: e.target.value })}
-                        className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-accent"
-                      />
-                    </div>
-                  ))}
-                </div>
-                <div className="flex items-center gap-2 mt-3">
-                  <input
-                    type="checkbox"
-                    id="isDefault"
-                    checked={newAddress.isDefault}
-                    onChange={(e) => setNewAddress({ ...newAddress, isDefault: e.target.checked })}
-                    className="accent-accent"
-                  />
-                  <label htmlFor="isDefault" className="text-sm text-gray-600">Set as default</label>
-                </div>
-                <div className="flex gap-2 mt-4">
-                  <button type="button" onClick={handleAddAddress} className="btn-primary text-sm py-2">
-                    Save Address
-                  </button>
-                  <button type="button" onClick={() => setIsAddingAddress(false)} className="btn-secondary text-sm py-2">
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {/* Address selection */}
-            {addresses.length === 0 ? (
-              <p className="text-gray-500 text-sm text-center py-4">
-                No saved addresses. Add one above.
-              </p>
-            ) : (
-              <div className="space-y-3">
-                {addresses.map((addr) => (
-                  <label
-                    key={addr.id}
-                    className={`flex items-start gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all ${
-                      selectedAddressId === addr.id
-                        ? 'border-accent bg-accent/5'
-                        : 'border-gray-100 hover:border-gray-200'
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name="address"
-                      value={addr.id}
-                      checked={selectedAddressId === addr.id}
-                      onChange={() => setSelectedAddressId(addr.id)}
-                      className="mt-0.5 accent-accent"
-                    />
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-primary-900 text-sm">{addr.fullName}</span>
-                        {addr.isDefault && (
-                          <span className="badge bg-accent/10 text-accent text-xs">Default</span>
-                        )}
-                      </div>
-                      <p className="text-xs text-gray-500 mt-0.5">
-                        {addr.street}, {addr.city}, {addr.state} {addr.zipCode}, {addr.country}
-                      </p>
-                      <p className="text-xs text-gray-400 mt-0.5">{addr.phone}</p>
-                    </div>
-                    {selectedAddressId === addr.id && (
-                      <Check className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
-                    )}
-                  </label>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Payment */}
-          <div className="bg-white rounded-xl shadow-luxury p-6">
-            <h2 className="font-display text-xl font-bold text-primary-900 mb-5 flex items-center gap-2">
-              <span className="text-xl">💳</span>
-              Payment Details
-            </h2>
-            <div className="border-2 border-gray-200 rounded-lg p-4 focus-within:border-accent transition-colors">
-              <CardElement options={cardElementOptions} />
-            </div>
-            <p className="text-xs text-gray-400 mt-2">
-              🔒 Your payment info is encrypted and secure.
-            </p>
-          </div>
-        </div>
-
-        {/* Right: Order Summary */}
-        <div>
-          <div className="bg-white rounded-xl shadow-luxury p-6 sticky top-24">
-            <h2 className="font-display text-xl font-bold text-primary-900 mb-5">Order Summary</h2>
-
-            {/* Cart items preview */}
-            <div className="space-y-3 mb-5 max-h-48 overflow-y-auto">
-              {items.map((item) => {
-                const price = item.product.price + (item.variant?.priceModifier || 0);
-                const imageUrl = item.product.images?.[0]?.url || 'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800';
-                return (
-                  <div key={item.id} className="flex gap-2 items-center">
-                    <div className="relative">
-                      <img src={imageUrl} alt={item.product.name} className="w-12 h-12 rounded object-cover" onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800'; }} />
-                      <span className="absolute -top-1 -right-1 w-4 h-4 bg-primary-900 text-white text-xs rounded-full flex items-center justify-center">{item.quantity}</span>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-xs font-medium text-primary-900 truncate">{item.product.name}</p>
-                      {item.variant && <p className="text-xs text-gray-400">{item.variant.value}</p>}
-                    </div>
-                    <span className="text-xs font-semibold text-primary-900">{formatPrice(price * item.quantity)}</span>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Coupon */}
-            <div className="mb-4">
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={couponCode}
-                  onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
-                  placeholder="Coupon code"
-                  className="flex-1 border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-accent uppercase"
-                />
-                <button type="button" onClick={handleApplyCoupon} className="px-3 py-2 bg-primary-100 text-primary-900 rounded text-xs font-medium hover:bg-primary-200 transition-colors">
-                  Apply
-                </button>
-              </div>
-            </div>
-
-            <div className="space-y-2 mb-4 text-sm">
-              <div className="flex justify-between text-gray-600">
-                <span>Subtotal</span>
-                <span>{formatPrice(total)}</span>
-              </div>
-              {discount > 0 && (
-                <div className="flex justify-between text-green-600">
-                  <span>Discount</span>
-                  <span>-{formatPrice(discount)}</span>
-                </div>
-              )}
-              <div className="flex justify-between text-gray-600">
-                <span>Shipping</span>
-                <span className={shipping === 0 ? 'text-green-600' : ''}>{shipping === 0 ? 'FREE' : formatPrice(shipping)}</span>
-              </div>
-              <div className="flex justify-between text-gray-600">
-                <span>Tax</span>
-                <span>{formatPrice(tax)}</span>
-              </div>
-            </div>
-
-            <div className="border-t border-gray-100 pt-3 mb-5">
-              <div className="flex justify-between items-center">
-                <span className="font-bold text-primary-900">Total</span>
-                <span className="font-display text-2xl font-bold text-primary-900">{formatPrice(orderTotal)}</span>
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              disabled={isProcessing || !stripe || items.length === 0}
-              className="w-full btn-primary justify-center text-base py-4 shadow-luxury"
-            >
-              {isProcessing ? (
-                <span className="flex items-center gap-2">
-                  <LoadingSpinner size="sm" color="text-white" />
-                  Processing...
-                </span>
-              ) : (
-                <>
-                  {`Place Order · ${formatPrice(orderTotal)}`}
-                </>
-              )}
-            </button>
-
-            <div className="flex items-center justify-center gap-2 mt-4 text-xs text-gray-400">
-              <Truck className="w-3.5 h-3.5" />
-              {shipping === 0 ? 'Free shipping applied' : `${formatPrice(shipping)} shipping`}
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-  );
-};
+const NIE_EMAIL = 'chideraannie129@gmail.com';
+// Nie's WhatsApp — update if a different number is preferred.
+const NIE_WHATSAPP = '2348000000000';
 
 const CheckoutPage: React.FC = () => {
+  const { items, total, clearCart } = useCartStore();
+  const navigate = useNavigate();
+
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
+  const [note, setNote] = useState('');
+
+  const shipping = total > 50000 ? 0 : 3500;
+  const orderTotal = total + shipping;
+
+  if (items.length === 0) {
+    return (
+      <div className="min-h-screen bg-cream-DEFAULT flex items-center justify-center px-4">
+        <div className="text-center max-w-sm">
+          <ShoppingBag className="w-20 h-20 text-gray-200 mx-auto mb-4" />
+          <h2 className="font-display text-2xl font-bold text-primary-900 mb-2">Your cart is empty</h2>
+          <p className="text-gray-500 mb-6">Add a piece you love, then place your order.</p>
+          <Link to="/products" className="btn-primary">
+            Browse the Collection <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const buildOrderText = () => {
+    const lines = items.map((item) => {
+      const unit = item.product.price + (item.variant?.priceModifier || 0);
+      const variant = item.variant ? ` (${item.variant.type}: ${item.variant.value})` : '';
+      return `• ${item.product.name}${variant} × ${item.quantity} — ${formatPrice(unit * item.quantity)}`;
+    });
+    return [
+      `Hello Nie, I'd like to place an order:`,
+      ``,
+      ...lines,
+      ``,
+      `Subtotal: ${formatPrice(total)}`,
+      `Delivery: ${shipping === 0 ? 'FREE' : formatPrice(shipping)}`,
+      `Total: ${formatPrice(orderTotal)}`,
+      ``,
+      `Name: ${name || '—'}`,
+      `Phone: ${phone || '—'}`,
+      `Delivery address: ${address || '—'}`,
+      note ? `Note: ${note}` : ``,
+    ]
+      .filter((l) => l !== '')
+      .join('\n');
+  };
+
+  const placeByEmail = () => {
+    const subject = `New order from ${name || 'a customer'} — Nie's Wears`;
+    const body = buildOrderText();
+    window.location.href = `mailto:${NIE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  const placeByWhatsApp = () => {
+    const text = buildOrderText();
+    window.open(`https://wa.me/${NIE_WHATSAPP}?text=${encodeURIComponent(text)}`, '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-cream-DEFAULT">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Breadcrumb items={[{ label: 'Cart', href: '/cart' }, { label: 'Checkout' }]} />
-        <h1 className="font-display text-3xl font-bold text-primary-900 mb-8">Checkout</h1>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <Breadcrumb items={[{ label: 'Cart', href: '/cart' }, { label: 'Place Order' }]} />
 
-        <Elements stripe={stripePromise}>
-          <CheckoutForm />
-        </Elements>
+        <h1 className="font-display text-3xl font-bold text-primary-900 mb-2">Place Your Order</h1>
+        <p className="text-gray-500 mb-8 max-w-xl">
+          Tell us where to deliver and send your order straight to Nie by email or WhatsApp.
+          She'll confirm availability, delivery and payment with you directly.
+        </p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Details form */}
+          <div className="lg:col-span-2 bg-white rounded-xl shadow-luxury p-6 space-y-5">
+            <h2 className="font-display text-xl font-bold text-primary-900">Delivery Details</h2>
+
+            <div>
+              <label className="block text-sm font-medium text-primary-900 mb-1.5">Full name</label>
+              <input value={name} onChange={(e) => setName(e.target.value)}
+                placeholder="Your name"
+                className="w-full border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/30" />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-primary-900 mb-1.5">Phone (WhatsApp)</label>
+              <input value={phone} onChange={(e) => setPhone(e.target.value)}
+                placeholder="e.g. 080..."
+                className="w-full border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/30" />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-primary-900 mb-1.5">Delivery address</label>
+              <textarea value={address} onChange={(e) => setAddress(e.target.value)}
+                rows={3} placeholder="Street, area, city, state"
+                className="w-full border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/30" />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-primary-900 mb-1.5">Note (optional)</label>
+              <textarea value={note} onChange={(e) => setNote(e.target.value)}
+                rows={2} placeholder="Anything Nie should know — colour, size, preferred delivery time…"
+                className="w-full border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/30" />
+            </div>
+          </div>
+
+          {/* Summary */}
+          <div className="lg:col-span-1">
+            <div className="bg-white rounded-xl shadow-luxury p-6 sticky top-24">
+              <h2 className="font-display text-xl font-bold text-primary-900 mb-5">Your Order</h2>
+
+              <div className="space-y-3 mb-5 max-h-64 overflow-y-auto">
+                {items.map((item) => {
+                  const unit = item.product.price + (item.variant?.priceModifier || 0);
+                  return (
+                    <div key={item.id} className="flex justify-between gap-2 text-sm">
+                      <span className="text-gray-600">
+                        {item.product.name}
+                        {item.variant && <span className="text-gray-400"> ({item.variant.value})</span>}
+                        <span className="text-gray-400"> × {item.quantity}</span>
+                      </span>
+                      <span className="font-medium text-primary-900 whitespace-nowrap">
+                        {formatPrice(unit * item.quantity)}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="border-t border-gray-100 pt-4 space-y-2 mb-5">
+                <div className="flex justify-between text-sm text-gray-600">
+                  <span>Subtotal</span>
+                  <span className="font-medium text-primary-900">{formatPrice(total)}</span>
+                </div>
+                <div className="flex justify-between text-sm text-gray-600">
+                  <span>Delivery</span>
+                  <span className={shipping === 0 ? 'text-green-600 font-medium' : 'font-medium text-primary-900'}>
+                    {shipping === 0 ? 'FREE' : formatPrice(shipping)}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center pt-2">
+                  <span className="font-semibold text-primary-900">Total</span>
+                  <span className="font-display text-2xl font-bold text-primary-900">{formatPrice(orderTotal)}</span>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <button onClick={placeByEmail}
+                  className="btn-primary w-full justify-center text-base py-3.5">
+                  <Mail className="w-4.5 h-4.5" /> Order by Email
+                </button>
+                <button onClick={placeByWhatsApp}
+                  className="btn-secondary w-full justify-center text-sm py-3">
+                  <MessageCircle className="w-4 h-4" /> Order on WhatsApp
+                </button>
+                <button onClick={() => { clearCart(); navigate('/products'); }}
+                  className="w-full text-xs text-gray-400 hover:text-red-500 transition-colors pt-1">
+                  Clear cart
+                </button>
+              </div>
+
+              <p className="text-xs text-gray-400 text-center mt-4">
+                Nie confirms every order personally before payment.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

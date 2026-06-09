@@ -104,7 +104,6 @@ const ProductDetailPage: React.FC = () => {
   const currentPrice = product.price + (selectedVariantObj?.priceModifier || 0);
 
   const handleAddToCart = async () => {
-    if (!isAuthenticated) { toast.error('Please log in'); return; }
     if (product.stock === 0) { toast.error('Out of stock'); return; }
     setIsAddingToCart(true);
     try {
@@ -119,7 +118,6 @@ const ProductDetailPage: React.FC = () => {
   };
 
   const handleWishlist = async () => {
-    if (!isAuthenticated) { toast.error('Please log in'); return; }
     try {
       await toggle(product.id);
       toast.success(inWishlist ? 'Removed from wishlist' : 'Added to wishlist');
