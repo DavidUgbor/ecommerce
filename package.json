@@ -8,9 +8,12 @@
     "build": "(cd frontend && npm ci && npm run build) && (cd backend && npm ci && npm run build)",
     "seed": "npm run seed --prefix backend",
     "setup": "npm run install:all && npm run seed",
-    "start": "NODE_ENV=production npm run start --prefix backend"
+    "start": "NODE_ENV=production npm run start --prefix backend",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "wrangler": "^4.99.0"
   }
 }
