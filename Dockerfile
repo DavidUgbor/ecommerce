@@ -23,4 +23,4 @@ RUN mkdir -p uploads data
 ENV NODE_ENV=production
 ENV DATABASE_URL="file:./data/prod.db"
 
-CMD ["sh", "-c", "npx prisma db push --accept-data-loss && node dist/seed.js && node dist/server.js"]
+CMD ["sh", "-c", "npx prisma db push --accept-data-loss && node dist/server.js"]
