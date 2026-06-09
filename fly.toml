@@ -1,0 +1,25 @@
+app = "nieswears-api"
+primary_region = "jnb"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  NODE_ENV = "production"
+  PORT = "8080"
+  DATABASE_URL = "file:./data/prod.db"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+
+[[mounts]]
+  source = "nieswears_data"
+  destination = "/app/backend/data"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"
