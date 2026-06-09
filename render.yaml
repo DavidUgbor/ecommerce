@@ -1,22 +1,18 @@
+# Render Blueprint for the Nie's Wears backend API.
+# Frontend is hosted separately on Vercel.
 services:
   - type: web
-    name: leathercraft
+    name: nieswears-api
     runtime: docker
     dockerfilePath: ./Dockerfile
     plan: free
+    region: frankfurt          # closest free region to Lagos
+    healthCheckPath: /api/health
+    autoDeploy: true
     envVars:
       - key: NODE_ENV
         value: production
       - key: JWT_SECRET
-        generateValue: true
+        value: leathercraft-secret-2024-production
       - key: DATABASE_URL
         value: file:./data/prod.db
-      - key: STRIPE_SECRET_KEY
-        sync: false
-      - key: STRIPE_WEBHOOK_SECRET
-        sync: false
-      - key: FRONTEND_URL
-        fromService:
-          type: web
-          name: leathercraft
-          property: host
