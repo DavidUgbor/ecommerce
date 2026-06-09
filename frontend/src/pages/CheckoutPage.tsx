@@ -6,8 +6,8 @@ import Breadcrumb from '../components/Breadcrumb';
 import { formatPrice } from '../lib/format';
 
 const NIE_EMAIL = 'chideraannie129@gmail.com';
-// Nie's WhatsApp — update if a different number is preferred.
-const NIE_WHATSAPP = '2348000000000';
+// Nie's WhatsApp (Nigeria, 234 + number without the leading 0).
+const NIE_WHATSAPP = '2349135765658';
 
 const CheckoutPage: React.FC = () => {
   const { items, total, clearCart } = useCartStore();
